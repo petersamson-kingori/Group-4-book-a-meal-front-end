@@ -73,13 +73,13 @@ const Contact = () => {
                 </p>
                 <div className=" d-flex align-items-center gap-2">
                   <h6 className="fs-6 mb-0">Phone:</h6>
-                  <p className="section__description mb-0">+254794794734</p>
+                  <p className="section__description mb-0">+254704606850</p>
                 </div>
 
                 <div className=" d-flex align-items-center gap-2">
                   <h6 className="mb-0 fs-6">Email:</h6>
                   <p className="section__description mb-0">
-                    zeinkhalid004@gmail.com
+                    craveMaster@gmail.com
                   </p>
                 </div>
 

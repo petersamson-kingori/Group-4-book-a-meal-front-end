@@ -106,7 +106,7 @@ const Header = ({user, setUser}) => {
         <div className="nav__wrapper d-flex align-items-center justify-content-between">
           <div className="logo">
             <img src={logo} alt="logo" />
-            <h5>Comrade Treat</h5>
+            <h5>CraveMaster</h5>
           </div>
 
           {/* ======= menu ======= */}
