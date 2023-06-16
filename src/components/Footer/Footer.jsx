@@ -12,7 +12,7 @@ const Footer = () => {
           <Col lg="3" md="4" sm="6">
             <div className=" footer__logo text-start">
               <img src={logo} alt="logo" />
-              <h5>Comrade Treat</h5>
+              <h5>CraveMaster</h5>
               <p>
                 We believe in the commitment to our community and in fostering
                 long term relationships with local farmers and fishermen. Our
@@ -44,11 +44,11 @@ const Footer = () => {
                 <p>Location: Ngong, Prestige, Nairobi</p>
               </ListGroupItem>
               <ListGroupItem className=" delivery__time-item border-0 ps-0">
-                <span>Phone: +254794794734</span>
+                <span>Phone: +254704606850</span>
               </ListGroupItem>
 
               <ListGroupItem className=" delivery__time-item border-0 ps-0">
-                <span>Email: zeinkhalid004@gmail.com</span>
+                <span>Email: cravemaster@gmail.com</span>
               </ListGroupItem>
             </ListGroup>
           </Col>
