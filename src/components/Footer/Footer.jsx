@@ -14,9 +14,7 @@ const Footer = () => {
               <img src={logo} alt="logo" />
               <h5>CraveMaster</h5>
               <p>
-                We believe in the commitment to our community and in fostering
-                long term relationships with local farmers and fishermen. Our
-                menus reflect these connections, featuring local, seasonal
+                We believe our menus reflect our commitment to our community, featuring local, seasonal
                 produce and sustainably sourced food and meats.
               </p>
             </div>
