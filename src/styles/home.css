@@ -1,9 +1,17 @@
+.bg-image {
+  background-image: url("../assets/images/foodtruck-bg.jpeg");
+  background-size: cover;
+  background-position: bottom 0px left 280px;
+}
+.header-text-row {
+  background-color: #e9f1e2;
+}
 .feature__subtitle {
-  color: #df2020;
+  color: #34BB78;
 }
 
 .feature__title span {
-  color: #df2020;
+  color: #34BB78;
 }
 
 .feature__text {
@@ -15,7 +23,7 @@
 }
 
 .food__category {
-  background: #df2020;
+  background: #34BB78;
   text-align: center;
   margin-top: 30px;
   padding: 20px 0px;
@@ -38,11 +46,11 @@
 .foodBtnActive {
   background: #fff !important;
   border-radius: 5px;
-  color: #df2020 !important;
+  color: #34BB78 !important;
 }
 
 .tasty__treat-title span {
-  color: #df2020;
+  color: #34BB78;
 }
 
 .tasty__treat-desc {
@@ -57,7 +65,7 @@
 
 .choose__us-title i {
   font-weight: 500 !important;
-  color: #df2020;
+  color: #34BB78;
 }
 
 .choose__us-desc {
@@ -65,11 +73,11 @@
 }
 
 .testimonial__subtitle {
-  color: #df2020;
+  color: #34BB78;
 }
 
 .testimonial__title span {
-  color: #df2020;
+  color: #34BB78;
 }
 
 .testimonial__desc {
@@ -109,7 +117,9 @@
     font-size: 0.8rem;
     margin-bottom: 0;
   }
-
+  .img-container {
+    
+  }
   .feature__subtitle {
     font-size: 1rem;
   }

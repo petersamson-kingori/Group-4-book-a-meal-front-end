@@ -9,7 +9,8 @@ import "../styles/home.css";
 import featureImg01 from "../assets/images/service-01.png";
 import featureImg02 from "../assets/images/service-02.png";
 import featureImg03 from "../assets/images/service-03.png";
-import whyImg from "../assets/images/location.png";
+import whyImg from "../assets/images/cravemaster-2.jpeg";
+import heroImg1 from "../assets/images/foodtruck-bg.jpeg";
 
 const featureData = [
   {
@@ -33,10 +34,15 @@ const featureData = [
 const Home = () => {
   return (
     <Helmet title="Home">
-      <section>
+      <section >
         <Container>
-          <Row>
-            <Col lg="6" md="6">
+          <Row className="header-text-row">
+          <Col lg="8" md="8">
+              <div className="hero__img bg-info h-100">
+                <img src={heroImg1} alt="hero-img" className="w-100 h-100" />
+              </div>
+            </Col>
+            <Col lg="4" md="4" className="header-text">
               <div className="hero__content  ">
                 <h5 className="mb-3">Easy way to make an order</h5>
                 <h1 className="mb-4 hero__title">
@@ -79,11 +85,7 @@ const Home = () => {
               </div>
             </Col>
 
-            <Col lg="6" md="6">
-              <div className="hero__img">
-                <img src={heroImg} alt="hero-img" className="w-100" />
-              </div>
-            </Col>
+            
           </Row>
         </Container>
       </section>
@@ -118,11 +120,8 @@ const Home = () => {
       <section className="why__choose-us">
         <Container>
           <Row>
-            <Col lg="6" md="6">
-              <img src={whyImg} alt="why-tasty-treat" className="w-100" />
-            </Col>
-
-            <Col lg="6" md="6">
+            
+            <Col lg="8" md="8">
               <div className="why__tasty-treat">
                 <h2 className="tasty__treat-title mb-4">
                   Why <span>CraveMaster?</span>
@@ -172,6 +171,13 @@ const Home = () => {
                 </ListGroup>
               </div>
             </Col>
+            <Col lg="4" md="4">
+              <div className="h-100 d-flex">
+              <img src={whyImg} alt="why-tasty-treat" className="w-100 my-auto rounded-circle" />
+              </div>
+              
+            </Col>
+
           </Row>
         </Container>
       </section>

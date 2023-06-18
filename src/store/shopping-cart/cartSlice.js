@@ -74,7 +74,7 @@ const cartSlice = createSlice({
       const id = action.payload;
       const existingItem = state.cartItems.find((item) => item.id === id);
       state.totalQuantity--;
-
+      if(!existingItem) return;
       if (existingItem.quantity === 1) {
         state.cartItems = state.cartItems.filter((item) => item.id !== id);
       } else {
@@ -116,8 +116,20 @@ const cartSlice = createSlice({
         state.totalQuantity
       );
     },
+    getCurrentItem(state, action) {
+      const id = action.payload;
+      const existingItem = state.cartItems.find((item) => item.id === id);
+      return existingItem;
+    }
   },
 });
+
+export const cartSelector = (state) => state.cart;
+//export a function to get item based on id from cart
+export const getCurrentItem = (state, id) => {
+  const existingItem = state.cart.cartItems.find((item) => item.id === id);
+  return existingItem;
+};
 
 export const cartActions = cartSlice.actions;
 export default cartSlice;

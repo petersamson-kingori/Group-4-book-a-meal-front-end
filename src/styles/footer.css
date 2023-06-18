@@ -1,7 +1,7 @@
 .footer {
   padding-top: 50px;
   padding-bottom: 30px;
-  background: #fde4e4;
+  background: #d6f1e4;
 }
 
 .footer__logo img {
@@ -60,7 +60,7 @@
 }
 
 .newsletter span {
-  background: #df2020;
+  background: #34BB78;
   padding: 5px 30px;
   border-radius: 5px;
 }
@@ -75,14 +75,14 @@
 
 .social__links span i {
   padding: 5px;
-  background: #df2020;
+  background: #34BB78;
   color: #fff;
   border-radius: 50%;
 }
 
 .copyright__text {
   font-size: 0.8rem;
-  color: #df2020;
+  color: #34BB78;
 }
 
 @media only screen and (max-width: 992px) {
