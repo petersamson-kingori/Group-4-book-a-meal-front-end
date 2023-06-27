@@ -1,7 +1,7 @@
 import React from "react";
 import Helmet from "../components/Helmet/Helmet.js";
 import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
-import heroImg from "../assets/images/hero.png";
+//import heroImg from "../assets/images/hero.png";
 import "../styles/hero-section.css";
 import { Link } from "react-router-dom";
 import Category from "../components/UI/category/Category.jsx";

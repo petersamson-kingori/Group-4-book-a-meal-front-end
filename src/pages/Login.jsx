@@ -9,11 +9,10 @@ const Login = () => {
   const [user, setUser] = useState('');
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
-	const auth = useAuth()
-  const location = useLocation()
+  const auth = useAuth();
+  const location = useLocation();
 
-	const redirectPath = location.state?.path || '/'
+  const redirectPath = location.state?.path || '/';
   const navigate = useNavigate();
 
   function handleSubmit(e) {
@@ -26,15 +25,18 @@ const Login = () => {
       body: JSON.stringify({ email, password }),
     }).then((res) => {
       if (res.ok) {
-        // res.json().then((user) => {console.log(user);setUser(user);navigate("/home");});
-        res
-         .json()
-         .then((user) => console.log(user));
-         auth.login(user)
-         navigate(redirectPath, {replace: true});
-        //  .then(navigate("/"))
-      }else{
-        res.json().then((errorData) => setErrors(errorData.error))
+        res.json().then((user) => {
+          console.log(user);
+          setUser(user);
+          navigate("/home");
+        });
+        res.json().then((user) => console.log(user));
+        auth.login(user);
+        navigate(redirectPath, { replace: true });
+      } else {
+        res.json().then((errorData) => {
+          console.log(errorData.error); // Console log the error message
+        });
       }
     });
   }
