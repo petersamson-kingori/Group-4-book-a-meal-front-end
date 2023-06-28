@@ -18,7 +18,7 @@ const Routers = () => {
   return (
     <AuthProvider>
       <Routes>
-        <Route path="/" element={<Navigate to="https://crave-masters-front-end.onrender.com" replace />} />
+        <Route path="/" element={<Navigate to="/" replace />} />
         <Route path="/home" element={<Home user={user} setUser={setUser} />} />
         <Route
           path="/foods"
@@ -32,7 +32,7 @@ const Routers = () => {
         <Route path="/register" element={<Register setUser={setUser} />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/reviews" element={<RequireAuth><Reviews /></RequireAuth>} />
-        <Route path="/*" element={<Navigate to="https://crave-masters-front-end.onrender.com" />} />
+        <Route path="/*" element={<Navigate to="/" replace />} />
       </Routes>
     </AuthProvider>
   );
