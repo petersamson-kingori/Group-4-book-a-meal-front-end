@@ -12,13 +12,14 @@ import { useState } from "react";
 import Reviews from "../components/UI/reviews/reviews";
 import { AuthProvider } from "../pages/auth";
 import RequireAuth from "../pages/RequireAuth";
+// import ProtectedRoutes from "./proutes";
 
 const Routers = () => {
   const [user, setUser] = useState(null);
   return (
     <AuthProvider>
       <Routes>
-        <Route path="/" element={<Navigate to="/" replace />} />
+        <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home user={user} setUser={setUser} />} />
         <Route
           path="/foods"
@@ -32,7 +33,6 @@ const Routers = () => {
         <Route path="/register" element={<Register setUser={setUser} />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/reviews" element={<RequireAuth><Reviews /></RequireAuth>} />
-        <Route path="/*" element={<Navigate to="/" replace />} />
       </Routes>
     </AuthProvider>
   );
