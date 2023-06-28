@@ -20,8 +20,8 @@ const Register = ({ setUser }) => {
       },
       body: JSON.stringify({
         username: username,
-        email,
-        password,
+        email: email,
+        password: password,
         password_confirmation: passwordConfirmation, // Include password_confirmation field
       }),
     }).then((res) => {
