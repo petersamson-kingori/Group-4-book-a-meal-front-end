@@ -19,10 +19,12 @@ const Register = ({ setUser }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: username,
-        email: email,
-        password: password,
-        password_confirmation: passwordConfirmation, // Include password_confirmation field
+        user: {
+          username: username,
+          email: email,
+          password: password,
+          password_confirmation: passwordConfirmation
+        } // Include password_confirmation field
       }),
     }).then((res) => {
       if (res.ok) {
