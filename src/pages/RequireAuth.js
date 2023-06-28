@@ -1,25 +1,38 @@
-import React, {useEffect, useState} from 'react'
-// import { useAuth } from './auth'
-import {Navigate, useLocation} from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { useAuth } from './auth';
+import { Navigate, useLocation } from 'react-router-dom';
 
-export default function RequireAuth({children}){
+export default function RequireAuth({ children }) {
+  const location = useLocation();
+  const auth = useAuth();
+  const [currentUser, setCurrentUser] = useState(null);
 
-    const location = useLocation()
-    // const auth = useAuth()
-    const [currentUser, setCurrentUser] = useState('');
-
-    useEffect(()=>{
-        fetch("https://food-api-ivzo.onrender.com/auth")
-        .then(res =>{
-          if(res.ok){
-            res.json().then(user => setCurrentUser(user))
+  useEffect(() => {
+    if (auth.isAuthenticated()) {
+      fetch('/api/v1/profile', {
+        headers: {
+          Authorization: `Bearer ${auth.getToken()}` // Include the authentication token
+        }
+      })
+        .then(res => {
+          if (res.ok) {
+            return res.json();
           }
+          throw new Error('Failed to fetch user details');
         })
-    },[])
-
-    if(!currentUser){
-        return <Navigate to='/login' state={{path: location.pathname}}/>
+        .then(data => {
+          setCurrentUser(data.user);
+        })
+        .catch(error => {
+          console.error(error);
+          auth.logout(); // Log out the user if an error occurs during fetch
+        });
     }
+  }, [auth]);
 
-    return children
+  if (!currentUser) {
+    return <Navigate to="/login" state={{ path: location.pathname }} />;
+  }
+
+  return children;
 }

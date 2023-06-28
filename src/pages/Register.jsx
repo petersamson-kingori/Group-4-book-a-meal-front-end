@@ -4,25 +4,25 @@ import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
 
-const Register = ( {setUser} ) => {
+const Register = ({ setUser }) => {
   const navigate = useNavigate();
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState(""); // New state variable
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("https://food-api-ivzo.onrender.com/signup", {
+    fetch("https://group-4-book-a-meal-api.onrender.com/api/v1/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        first_name: firstName,
-        last_name: lastName,
+        username: username,
         email,
         password,
+        password_confirmation: passwordConfirmation, // Include password_confirmation field
       }),
     }).then((res) => {
       if (res.ok) {
@@ -50,21 +50,12 @@ const Register = ( {setUser} ) => {
                       Sign Up
                     </h1>
                     <div className="form__group">
-                      <label htmlFor="firstName">First Name</label>
+                      <label htmlFor="username">Username</label>
                       <br />
                       <input
                         type="text"
-                        value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)}
-                      />
-                    </div>
-                    <div className="form__group">
-                      <label htmlFor="lastName">Last Name</label>
-                      <br />
-                      <input
-                        type="text"
-                        value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                       />
                     </div>
                     <div className="form__group">
@@ -83,6 +74,16 @@ const Register = ( {setUser} ) => {
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        autoComplete="current-password"
+                      />
+                    </div>
+                    <div className="form__group">
+                      <label htmlFor="passwordConfirmation">Confirm Password</label>
+                      <br />
+                      <input
+                        type="password"
+                        value={passwordConfirmation}
+                        onChange={(e) => setPasswordConfirmation(e.target.value)}
                         autoComplete="current-password"
                       />
                     </div>

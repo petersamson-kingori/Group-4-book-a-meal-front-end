@@ -6,35 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { cartUiActions } from "../../store/shopping-cart/cartUiSlice";
 import "../../styles/header.css";
 
-// const nav__links = [
-//   {
-//     display: "Home",
-//     path: "/home",
-//   },
-//   {
-//     display: "Foods",
-//     path: "/foods",
-//   },
-//   {
-//     display: "Cart",
-//     path: "/cart",
-//   },
-//   {
-//     display: "Contact",
-//     path: "/contact",
-//   },
-//   {
-//     display: "Customer Reviews",
-//     path: "/reviews",
-//   },
-//   {
-//     display: "Logout",
-//     path: "/logout",
-//     onClick: {handleLogoutClick}
-//   },
-// ];
-
-const Header = ({user, setUser}) => {
+const Header = ({ user, setUser }) => {
   const menuRef = useRef(null);
   const headerRef = useRef(null);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
@@ -45,6 +17,32 @@ const Header = ({user, setUser}) => {
   const toggleCart = () => {
     dispatch(cartUiActions.toggle());
   };
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (
+        document.body.scrollTop > 80 ||
+        document.documentElement.scrollTop > 80
+      ) {
+        headerRef.current.classList.add("header__shrink");
+      } else {
+        headerRef.current.classList.remove("header__shrink");
+      }
+    });
+
+    return () => window.removeEventListener("scroll");
+  }, []);
+
+  const navigate = useNavigate();
+
+  function handleLogoutClick() {
+    fetch("https://food-api-ivzo.onrender.com/logout", { method: "DELETE" }).then((res) => {
+      if (res.ok) {
+        setUser(null);
+        navigate("/login");
+      }
+    });
+  }
 
   const nav__links = [
     {
@@ -70,35 +68,9 @@ const Header = ({user, setUser}) => {
     {
       display: "Logout",
       path: "/logout",
-      onClick: {handleLogoutClick}
+      onClick: handleLogoutClick,
     },
   ];
-
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (
-        document.body.scrollTop > 80 ||
-        document.documentElement.scrollTop > 80
-      ) {
-        headerRef.current.classList.add("header__shrink");
-      } else {
-        headerRef.current.classList.remove("header__shrink");
-      }
-    });
-
-    return () => window.removeEventListener("scroll");
-  }, []);
-
-  const navigate = useNavigate()
-  function handleLogoutClick() {
-      fetch("https://food-api-ivzo.onrender.com/logout", { method: "DELETE" })
-      .then((res) => {
-        if (res.ok) {
-          setUser(null);
-          navigate('/login')
-        }
-      });
-  }
 
   return (
     <header className="header" ref={headerRef}>
@@ -116,9 +88,7 @@ const Header = ({user, setUser}) => {
                 <NavLink
                   to={item.path}
                   key={index}
-                  className={(navClass) =>
-                    navClass.isActive ? "active__menu" : ""
-                  }
+                  className={(navClass) => (navClass.isActive ? "active__menu" : "")}
                 >
                   {item.display}
                 </NavLink>
@@ -134,9 +104,13 @@ const Header = ({user, setUser}) => {
             </span>
 
             <span className="user">
-              <Link to="/login">
-                <i class="ri-user-line"></i>
-              </Link>
+              {user ? (
+                <span>{user.username}</span>
+              ) : (
+                <Link to="/login">
+                  <i class="ri-user-line"></i>
+                </Link>
+              )}
             </span>
 
             <span className="mobile__menu" onClick={toggleMenu}>

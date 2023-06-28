@@ -1,43 +1,52 @@
+// Login.jsx
+import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 import CommonSection from "../components/UI/common-section/CommonSection";
 import Helmet from "../components/Helmet/Helmet";
 import { useAuth } from "./auth";
 
 const Login = () => {
-  const [user, setUser] = useState('');
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-	const auth = useAuth()
-  const location = useLocation()
-
-	const redirectPath = location.state?.path || '/'
+  const { login } = useAuth();
+  const location = useLocation();
+  const redirectPath = location.state?.path || "/";
   const navigate = useNavigate();
 
-  function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    fetch("https://food-api-ivzo.onrender.com/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    }).then((res) => {
-      if (res.ok) {
-        // res.json().then((user) => {console.log(user);setUser(user);navigate("/home");});
-        res
-         .json()
-         .then((user) => console.log(user));
-         auth.login(user)
-         navigate(redirectPath, {replace: true});
-        //  .then(navigate("/"))
-      }else{
-        res.json().then((errorData) => setErrors(errorData.error))
+    try {
+      const response = await fetch(
+        "https://group-4-book-a-meal-api.onrender.com/api/v1/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user: {
+              username,
+              password,
+            },
+          }),
+        }
+      );
+
+      if (response.ok) {
+        const { user, jwt } = await response.json();
+        localStorage.setItem("token", jwt);
+        login(user);
+        navigate(redirectPath, { replace: true });
+      } else {
+        const errorData = await response.json();
+        setErrors(errorData.error);
       }
-    });
-  }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -54,12 +63,12 @@ const Login = () => {
                       Login
                     </h1>
                     <div className="form__group">
-                      <label htmlFor="email">Email</label>
+                      <label htmlFor="username">Username</label>
                       <br />
                       <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                       />
                     </div>
                     <div className="form__group">
