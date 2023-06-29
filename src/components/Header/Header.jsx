@@ -1,17 +1,22 @@
 import React, { useRef, useEffect } from "react";
 import { Container } from "reactstrap";
 import logo from "../../assets/images/ivy_logo_.jpeg";
-import { NavLink, Link, useNavigate, useLocation } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { cartUiActions } from "../../store/shopping-cart/cartUiSlice";
 import "../../styles/header.css";
-import { useAuth } from "../../pages/auth";
+//import { useAuth } from "../../pages/auth";
 
 const Header = ({ user, setUser }) => {
   const menuRef = useRef(null);
   const headerRef = useRef(null);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const dispatch = useDispatch();
+
+   const navigate = useNavigate();
+  // const { logout } = useAuth();
+  // const location = useLocation();
+  // const redirectPath = location.state?.path || "/home";
 
   const toggleMenu = () => menuRef.current.classList.toggle("show__menu");
 
@@ -34,11 +39,9 @@ const Header = ({ user, setUser }) => {
     return () => window.removeEventListener("scroll");
   }, []);
 
-  const navigate = useNavigate();
-  const { logout } = useAuth();
-  const location = useLocation();
-  const redirectPath = location.state?.path || "/home";
   
+  
+   // NOt used remove this it breaks
 
   function handleLogoutClick() {
     fetch("https://crave-masters-front-end.onrender.com/logout", { method: "DELETE" }).then((res) => {
@@ -46,24 +49,24 @@ const Header = ({ user, setUser }) => {
         setUser(null);
         navigate("/login");
       } else {
-        navigate("/home"); // Add the else condition to navigate to /home
+        navigate("/home");
       }
     });
   }
-  
+   // Not used remove this it breaks
 
   
 
-  function handleLogoutClick2() {
-    fetch("https://crave-masters-front-end.onrender.com/api/v1/logout", { method: "DELETE" })
-      .then((res) => {
-        if (res.ok) {
-          logout();
-          navigate(redirectPath, { replace: true });
+  // function handleLogoutClick() {
+  //   fetch("https://crave-masters-front-end.onrender.com/api/v1/logout", { method: "DELETE" })
+  //     .then((res) => {
+  //       if (res.ok) {
+  //         logout();
+  //         navigate(redirectPath, { replace: true });
           
-        }
-      });
-  }
+  //       }
+  //     });
+  // }
 
 
   const nav__links = [
@@ -84,18 +87,17 @@ const Header = ({ user, setUser }) => {
       display: "Contact",
       path: "/contact",
     },
-    {
-      display: "Profile",
-      path: "/profile",
-    },
+    // {
+    //   display: "Profile",
+    //   path: "/profile",
+    // },
     // {
     //   display: "Customer Reviews",
     //   path: "/reviews",
     // },
     {
-      display: "Logout",
+      display: "Log in",
       path: "/logout",
-      onClick: handleLogoutClick2,
     },
   ];
 
@@ -134,7 +136,7 @@ const Header = ({ user, setUser }) => {
               {user ? (
                 <span>{user.username}</span>
               ) : (
-                <Link to="/login">
+                <Link to="/profile">
                   <i class="ri-user-line"></i>
                 </Link>
               )}
