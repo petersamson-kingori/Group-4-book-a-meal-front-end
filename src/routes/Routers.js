@@ -28,14 +28,13 @@ const Routers = () => {
         />
         <Route path="/foods/:id" element={<FoodDetails />} />
         <Route path="/cart" element={<Cart />} />
-        {/* <Route path="/new" element={<New />} /> */}
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/logout" element={<Login />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<Register setUser={setUser} />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/reviews" element={<RequireAuth><Reviews /></RequireAuth>} />
-        <Route path="/profile" element={<RequireAuth><UserProfile /></RequireAuth>} /> 
+        <Route path="/profile" element={<UserProfile />} /> 
       </Routes>
     </AuthProvider>
   );
