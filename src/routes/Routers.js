@@ -12,7 +12,7 @@ import { useState } from "react";
 import Reviews from "../components/UI/reviews/reviews";
 import { AuthProvider } from "../pages/auth";
 import RequireAuth from "../pages/RequireAuth";
-import UserProfile from "../pages/UserProfile";
+import UserProfile from "./proutes";
 // import ProtectedRoutes from "./proutes";
 
 const Routers = () => {
