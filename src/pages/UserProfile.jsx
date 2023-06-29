@@ -29,7 +29,14 @@ const UserProfile = () => {
         </h2>
         <button
           onClick={handleLogoutClick}
-          style={{ display: "inline-block", marginRight: "30px" }}
+          style={{
+            display: "inline-block",
+            marginRight: "30px",
+            backgroundColor: "green",
+            color: "white",
+            padding: "10px 20px",
+            borderRadius: "5px",
+          }}
         >
           Logout
         </button>
