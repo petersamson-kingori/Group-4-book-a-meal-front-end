@@ -21,26 +21,26 @@ const UserProfile = () => {
   }
 
   return (
-    <div>
-      {user ? (
-        <div>
-          <h2 style={{ margin: "30px", padding: "30px" }}>
-            Welcome, {user.username}!
-          </h2>
-          <button
-            onClick={handleLogoutClick}
-            style={{ display: "inline-block", marginRight: "30px" }}
-          >
-            Logout
-          </button>
-        </div>
-      ) : (
+    <div style={{ display: "flex", alignItems: "center" }}>
+    {user ? (
+      <>
         <h2 style={{ margin: "30px", padding: "30px" }}>
-          Welcome, Guest. Please Log in!
+          Welcome, {user.username}!
         </h2>
-      )}
-      {/* Additional content for the user profile */}
-    </div>
+        <button
+          onClick={handleLogoutClick}
+          style={{ display: "inline-block", marginRight: "30px" }}
+        >
+          Logout
+        </button>
+      </>
+    ) : (
+      <h2 style={{ margin: "30px", padding: "30px" }}>
+        Welcome, Guest. Please Log in!
+      </h2>
+    )}
+    {/* Additional content for the user profile */}
+  </div>
   );
 };
 
