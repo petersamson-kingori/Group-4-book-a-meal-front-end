@@ -97,7 +97,7 @@ const Header = ({ user, setUser }) => {
     // },
     {
       display: "Log in",
-      path: "/logout",
+      path: "/login",
     },
   ];
 
