@@ -36,7 +36,7 @@ const Header = ({ user, setUser }) => {
   const navigate = useNavigate();
 
   function handleLogoutClick() {
-    fetch("https://food-api-ivzo.onrender.com/logout", { method: "DELETE" }).then((res) => {
+    fetch("https://crave-masters-front-end.onrender.com/api/v1/logout", { method: "DELETE" }).then((res) => {
       if (res.ok) {
         setUser(null);
         navigate("/login");
