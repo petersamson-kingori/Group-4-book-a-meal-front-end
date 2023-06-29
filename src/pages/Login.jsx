@@ -12,7 +12,7 @@ const Login = () => {
   const [errors, setErrors] = useState([]);
   const { login } = useAuth();
   const location = useLocation();
-  const redirectPath = location.state?.path || "/";
+  const redirectPath = location.state?.path || "/profile";
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
