@@ -12,7 +12,7 @@ import { useState } from "react";
 import Reviews from "../components/UI/reviews/reviews";
 import { AuthProvider } from "../pages/auth";
 import RequireAuth from "../pages/RequireAuth";
-import UserProfile from "./proutes";
+import UserProfile from "../pages/UserProfile";
 // import ProtectedRoutes from "./proutes";
 
 const Routers = () => {
@@ -28,6 +28,7 @@ const Routers = () => {
         />
         <Route path="/foods/:id" element={<FoodDetails />} />
         <Route path="/cart" element={<Cart />} />
+        {/* <Route path="/new" element={<New />} /> */}
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/logout" element={<Login />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
