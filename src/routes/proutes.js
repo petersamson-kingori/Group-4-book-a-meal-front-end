@@ -35,7 +35,7 @@ function ProtectedRoutes() {
   }, [navigate]);
 
   if (currentUser) {
-    navigate("/reviews");
+    navigate("/profile");
   }
 
   return <Login setCurrentUser={setCurrentUser} />;
