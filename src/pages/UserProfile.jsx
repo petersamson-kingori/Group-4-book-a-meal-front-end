@@ -24,11 +24,20 @@ const UserProfile = () => {
     <div>
       {user ? (
         <div>
-          <h2>Welcome, {user.username}!</h2>
-          <button onClick={handleLogoutClick}>Logout</button>
+          <h2 style={{ margin: "30px", padding: "30px" }}>
+            Welcome, {user.username}!
+          </h2>
+          <button
+            onClick={handleLogoutClick}
+            style={{ display: "inline-block", marginRight: "30px" }}
+          >
+            Logout
+          </button>
         </div>
       ) : (
-        <h2>Welcome, Guest Please Log in!</h2>
+        <h2 style={{ margin: "30px", padding: "30px" }}>
+          Welcome, Guest. Please Log in!
+        </h2>
       )}
       {/* Additional content for the user profile */}
     </div>
