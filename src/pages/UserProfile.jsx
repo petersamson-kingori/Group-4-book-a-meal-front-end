@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth } from "./auth";
 import { useNavigate, useLocation } from "react-router-dom";
+import "../../styles/user-profile.css";
 
 const UserProfile = () => {
   const { user, logout } = useAuth();
@@ -25,10 +26,10 @@ const UserProfile = () => {
       {user ? (
         <div>
           <h2>Welcome, {user.username}!</h2>
-          <button onClick={handleLogoutClick}>Logout</button>
+          <button className="logout__btn" onClick={handleLogoutClick}>Logout</button>
         </div>
       ) : (
-        <h2>Welcome, Guest!</h2>
+        <h2>Welcome, Guest Please Log in!</h2>
       )}
       {/* Additional content for the user profile */}
     </div>
