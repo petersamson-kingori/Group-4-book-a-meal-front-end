@@ -3,7 +3,7 @@ import { useAuth } from "./auth";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const UserProfile = () => {
-  const { user, removeUser } = useAuth();
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const redirectPath = location.state?.path || "/login";
@@ -14,7 +14,7 @@ const UserProfile = () => {
     fetch("https://crave-masters-front-end.onrender.com/api/v1/logout", { method: "DELETE" })
       .then((res) => {
         if (res.ok) {
-          removeUser();
+          logout();
           navigate(redirectPath, { replace: true });
         }
       });
