@@ -62,9 +62,13 @@ const Header = ({ user, setUser }) => {
       path: "/contact",
     },
     {
-      display: "Customer Reviews",
-      path: "/reviews",
+      display: "Profile",
+      path: "/profile",
     },
+    // {
+    //   display: "Customer Reviews",
+    //   path: "/reviews",
+    // },
     {
       display: "Logout",
       path: "/logout",

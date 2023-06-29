@@ -9,7 +9,7 @@ export default function RequireAuth({ children }) {
 
   useEffect(() => {
     if (auth.isAuthenticated()) {
-      fetch('/api/v1/profile', {
+      fetch('https://group-4-book-a-meal-api.onrender.com/api/v1/profile', {
         headers: {
           Authorization: `Bearer ${auth.getToken()}` // Include the authentication token
         }
