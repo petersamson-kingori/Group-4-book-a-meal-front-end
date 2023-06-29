@@ -32,7 +32,7 @@ const UserProfile = () => {
           style={{
             display: "inline-block",
             marginRight: "30px",
-            backgroundColor: "green",
+            backgroundColor: "#34BB78",
             color: "white",
             padding: "10px 20px",
             borderRadius: "5px",
