@@ -6,7 +6,7 @@ const UserProfile = () => {
 
   return (
     <div>
-      <h2>Welcome, {user ? user.name : "Guest"}!</h2>
+      <h2>Welcome, {user ? user.username : "Guest"}!</h2>
       {/* Additional content for the user profile */}
     </div>
   );
