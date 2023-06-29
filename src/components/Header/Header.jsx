@@ -1,10 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import { Container } from "reactstrap";
 import logo from "../../assets/images/ivy_logo_.jpeg";
-import { NavLink, Link, useNavigate } from "react-router-dom";
+import { NavLink, Link, useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { cartUiActions } from "../../store/shopping-cart/cartUiSlice";
 import "../../styles/header.css";
+import { useAuth } from "../../pages/auth";
 
 const Header = ({ user, setUser }) => {
   const menuRef = useRef(null);
@@ -34,20 +35,42 @@ const Header = ({ user, setUser }) => {
   }, []);
 
   const navigate = useNavigate();
+  const { logout } = useAuth();
+  const location = useLocation();
+  const redirectPath = location.state?.path || "/home";
+  
 
   function handleLogoutClick() {
-    fetch("https://crave-masters-front-end.onrender.com/api/v1/logout", { method: "DELETE" }).then((res) => {
+    fetch("https://crave-masters-front-end.onrender.com/logout", { method: "DELETE" }).then((res) => {
       if (res.ok) {
         setUser(null);
         navigate("/login");
+      } else {
+        navigate("/home"); // Add the else condition to navigate to /home
       }
     });
   }
+  
+
+  
+
+  function handleLogoutClick2() {
+    fetch("https://crave-masters-front-end.onrender.com/api/v1/logout", { method: "DELETE" })
+      .then((res) => {
+        if (res.ok) {
+          logout();
+          navigate(redirectPath, { replace: true });
+          
+        }
+      });
+  }
+
 
   const nav__links = [
     {
       display: "Home",
       path: "/home",
+      onClick: handleLogoutClick,
     },
     {
       display: "Foods",
@@ -72,7 +95,7 @@ const Header = ({ user, setUser }) => {
     {
       display: "Logout",
       path: "/logout",
-      onClick: handleLogoutClick,
+      onClick: handleLogoutClick2,
     },
   ];
 
