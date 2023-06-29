@@ -42,7 +42,7 @@ const UserProfile = () => {
         </button>
       </>
     ) : (
-      <h2 style={{ margin: "30px", padding: "30px" }}>
+      <h2 style={{ margin: "30px 30px 30px 60px", padding: "30px" }}>
         Welcome, Guest. Please Log in!
       </h2>
     )}
