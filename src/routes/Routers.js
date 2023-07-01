@@ -7,6 +7,7 @@ import Cart from "../pages/Cart";
 import Checkout from "../pages/Checkout";
 import Contact from "../pages/Contact";
 import Login from "../pages/Login";
+import LoginCaterer from "../pages/LoginCaterer";
 import Register from "../pages/Register";
 import { useState } from "react";
 import Reviews from "../components/UI/reviews/reviews";
@@ -32,6 +33,7 @@ const Routers = () => {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/logout" element={<Login user={user}/>} />
         <Route path="/login" element={<Login setUser={setUser} />} />
+        <Route path="/login_caterer" element={<LoginCaterer setUser={setUser} />} />
         <Route path="/register" element={<Register setUser={setUser} />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/reviews" element={<RequireAuth><Reviews /></RequireAuth>} />

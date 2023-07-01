@@ -87,6 +87,10 @@ const Header = ({ user, setUser }) => {
       display: "Contact",
       path: "/contact",
     },
+    {
+      display: "For Caterers",
+      path: "/login_caterer",
+    },
     // {
     //   display: "Profile",
     //   path: "/profile",
