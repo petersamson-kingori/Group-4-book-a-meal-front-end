@@ -14,7 +14,7 @@ import Reviews from "../components/UI/reviews/reviews";
 import { AuthProvider } from "../pages/auth";
 import RequireAuth from "../pages/RequireAuth";
 import UserProfile from "../pages/UserProfile";
-import UserProfile_Caterer from "../pages/UserProfile_Caterer";
+import UserProfileCaterer from "../pages/UserProfileCaterer";
 // import ProtectedRoutes from "./proutes";
 
 const Routers = () => {
@@ -39,7 +39,7 @@ const Routers = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/reviews" element={<RequireAuth><Reviews /></RequireAuth>} />
         <Route path="/profile" element={<UserProfile user={user} setUser={setUser} />} />
-        <Route path="/profile_caterer" element={<UserProfile_Caterer user={user} setUser={setUser} />} />  
+        <Route path="/profile_caterer" element={<UserProfileCaterer user={user} setUser={setUser} />} />  
       </Routes>
     </AuthProvider>
   );

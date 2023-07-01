@@ -7,7 +7,7 @@ import Helmet from "../components/Helmet/Helmet";
 import { useAuth } from "./auth";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [email, setemail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const { login } = useAuth();
@@ -27,7 +27,7 @@ const Login = () => {
           },
           body: JSON.stringify({
             user: {
-              username,
+              email,
               password,
             },
           }),
@@ -63,12 +63,12 @@ const Login = () => {
                       Login
                     </h1>
                     <div className="form__group">
-                      <label htmlFor="username">Username</label>
+                      <label htmlFor="email">email</label>
                       <br />
                       <input
                         type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        value={email}
+                        onChange={(e) => setemail(e.target.value)}
                       />
                     </div>
                     <div className="form__group">
