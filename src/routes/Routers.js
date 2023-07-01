@@ -37,7 +37,8 @@ const Routers = () => {
         <Route path="/register" element={<Register setUser={setUser} />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/reviews" element={<RequireAuth><Reviews /></RequireAuth>} />
-        <Route path="/profile" element={<UserProfile user={user} setUser={setUser} />} /> 
+        <Route path="/profile" element={<UserProfile user={user} setUser={setUser} />} />
+        <Route path="/profile_caterer" element={<UserProfile_Caterer user={user} setUser={setUser} />} />  
       </Routes>
     </AuthProvider>
   );
