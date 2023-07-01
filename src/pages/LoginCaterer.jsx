@@ -26,7 +26,7 @@ const Login = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            user: {
+            caterer: {
               username,
               password,
             },
