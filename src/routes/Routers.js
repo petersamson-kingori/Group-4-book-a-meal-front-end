@@ -14,6 +14,7 @@ import Reviews from "../components/UI/reviews/reviews";
 import { AuthProvider } from "../pages/auth";
 import RequireAuth from "../pages/RequireAuth";
 import UserProfile from "../pages/UserProfile";
+import UserProfile_Caterer from "../pages/UserProfile_Caterer";
 // import ProtectedRoutes from "./proutes";
 
 const Routers = () => {
