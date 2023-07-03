@@ -22,6 +22,7 @@ const UserProfile = () => {
   }
 
   return (
+    <>
     <div style={{ display: "flex", alignItems: "center" }}>
     {caterer ? (
       <>
@@ -64,7 +65,12 @@ const UserProfile = () => {
         Welcome, Caterer. Please Log in!
       </h2>
     )}
-    {caterer ? (
+   
+  
+
+  </div>
+  <div>
+  {caterer ? (
       <>
        <MenuOptionForm />
       </>
@@ -72,9 +78,8 @@ const UserProfile = () => {
       <>
       </>
     )}
-  
-
   </div>
+  </>
   );
 };
 
