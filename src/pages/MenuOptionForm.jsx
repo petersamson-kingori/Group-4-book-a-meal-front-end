@@ -19,7 +19,7 @@ const CreateMenuOptionForm = () => {
           description,
           price,
           // Assuming you have the `menu_id` available here
-          menu_id: menuId,
+          //menu_id: menuId,
         }),
       });
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuth } from "./auth";
 import { useNavigate, useLocation } from "react-router-dom";
-import MenuOptionForm from "./CreateMenuOptionForm"; 
+import MenuOptionForm from "./MenuOptionForm"; 
 
 const UserProfile = () => {
   const { caterer, logout } = useAuth();
