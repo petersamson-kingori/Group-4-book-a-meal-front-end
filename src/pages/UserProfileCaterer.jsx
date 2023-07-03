@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuth } from "./auth";
 import { useNavigate, useLocation } from "react-router-dom";
-import CreateMenuOptionForm from "./CreateMenuOptionForm"; 
+import MenuOptionForm from "./CreateMenuOptionForm"; 
 
 const UserProfile = () => {
   const { caterer, logout } = useAuth();
@@ -41,7 +41,7 @@ const UserProfile = () => {
         >
           Logout
         </button>
-        <CreateMenuOptionForm />
+        <MenuOptionForm />
       </>
     ) : (
       <h2 style={{ margin: "30px 30px 30px 150px", padding: "30px" }}>
