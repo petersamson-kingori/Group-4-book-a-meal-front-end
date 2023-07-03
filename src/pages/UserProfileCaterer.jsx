@@ -22,7 +22,7 @@ const UserProfile = () => {
 
   return (
     <div style={{ display: "flex", alignItems: "center" }}>
-    {user ? (
+    {caterer ? (
       <>
         <h2 style={{ margin: "30px 30px 30px 250px", padding: "30px" }}>
           Welcome, {caterer.username}!

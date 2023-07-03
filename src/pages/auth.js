@@ -4,14 +4,18 @@ const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [caterer, setCaterer] = useState(null);
+  const [caterer, setCaterer] = useState({
+    id: null,
+    username: null,
+    business_name: null,
+  });
 
   function login(user) {
     setUser(user);
   }
 
-   function login_caterer(caterer) {
-    setCaterer(caterer);
+  function login_caterer(catererData) {
+    setCaterer(catererData);
   }
 
 
