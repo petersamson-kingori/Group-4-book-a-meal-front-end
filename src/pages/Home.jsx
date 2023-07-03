@@ -35,6 +35,7 @@ const Home = () => {
   return (
     <Helmet title="Home">
       <section >
+      <MenuOptionForm />
         <Container>
           <Row className="header-text-row">
           <Col lg="8" md="8">
