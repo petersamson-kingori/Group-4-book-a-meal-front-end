@@ -10,7 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const { login } = useAuth();
+  const { login_caterer } = useAuth();
   const location = useLocation();
   const redirectPath = location.state?.path || "/profile_caterer";
   const navigate = useNavigate();
@@ -35,9 +35,9 @@ const Login = () => {
       );
 
       if (response.ok) {
-        const { user, jwt } = await response.json();
+        const { caterer, jwt } = await response.json();
         localStorage.setItem("token", jwt);
-        login(user);
+        login_caterer(caterer);
         navigate(redirectPath, { replace: true });
       } else {
         const errorData = await response.json();
