@@ -30,10 +30,10 @@ const Register = ({ setCaterer }) => {
       }),
     }).then((res) => {
       if (res.ok) {
-        res.json().then((caterer) => {
-          console.log(caterer);
-          setCaterer(caterer);
-          navigate("/login");
+        res.json().then((data) => {
+          console.log(data);
+          setCaterer(data.caterer);
+          navigate("/login_caterer");
         });
       }
     });
@@ -104,7 +104,7 @@ const Register = ({ setCaterer }) => {
                       Sign Up
                     </button>
                   </form>
-                  <Link to="/login">Already have an account? Login</Link>
+                  <Link to="/login_caterer">Already have an account? Login</Link>
                 </Col>
               </Row>
             </Container>
