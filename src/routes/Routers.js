@@ -9,6 +9,7 @@ import Contact from "../pages/Contact";
 import Login from "../pages/Login";
 import LoginCaterer from "../pages/LoginCaterer";
 import Register from "../pages/Register";
+import RegisterCaterer from "../pages/RegisterCaterer";
 import { useState } from "react";
 import Reviews from "../components/UI/reviews/reviews";
 import { AuthProvider } from "../pages/auth";
@@ -36,6 +37,7 @@ const Routers = () => {
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/login_caterer" element={<LoginCaterer setUser={setUser} />} />
         <Route path="/register" element={<Register setUser={setUser} />} />
+        <Route path="/registerCaterer" element={<RegisterCaterer setUser={setUser} />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/reviews" element={<RequireAuth><Reviews /></RequireAuth>} />
         <Route path="/profile" element={<UserProfile user={user} setUser={setUser} />} />

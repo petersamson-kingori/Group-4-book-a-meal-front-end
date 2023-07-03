@@ -82,7 +82,7 @@ const Login = () => {
                     </div>
                     <button className="addTOCart__btn">Login</button>
                   </form>
-                  <Link to="/register">
+                  <Link to="/registerCaterer">
                     Don't have an account? Create an account
                   </Link>
                 </Col>

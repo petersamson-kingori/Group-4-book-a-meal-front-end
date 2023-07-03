@@ -19,12 +19,16 @@ export function AuthProvider({ children }) {
     setUser(null);
   }
 
+   function logout_caterer(caterer) {
+    setCaterer(null);
+  }
+
   function isAuthenticated() {
     return user !== null; // Update this condition based on your authentication logic
   }
 
   return (
-    <AuthContext.Provider value={{ user, caterer, login_caterer, login, logout, isAuthenticated }}>
+    <AuthContext.Provider value={{ user, caterer, login_caterer, login, logout, logout_caterer, isAuthenticated }}>
       {children}
     </AuthContext.Provider>
   );
