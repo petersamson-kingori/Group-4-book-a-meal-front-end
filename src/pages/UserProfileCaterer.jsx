@@ -28,7 +28,7 @@ const UserProfile = () => {
         <h2 style={{ margin: "30px 30px 30px 250px", padding: "30px" }}>
           Welcome, {caterer.username}!
         </h2>
-        <MenuOptionForm />
+    
         <button
           onClick={handleLogoutClick}
           style={{
@@ -50,7 +50,36 @@ const UserProfile = () => {
         Welcome, Caterer. Please Log in!
       </h2>
     )}
-    {/* Additional content for the user profile */}
+    
+    {caterer ? (
+      <>
+        <h2 style={{ margin: "30px 30px 30px 250px", padding: "30px" }}>
+          Welcome, {caterer.username}!
+        </h2>
+    
+        <button
+          onClick={handleLogoutClick}
+          style={{
+            display: "inline-block",
+            marginRight: "30px",
+            backgroundColor: "#34BB78",
+            color: "white",
+            padding: "10px 20px",
+            borderRadius: "5px",
+          }}
+        >
+          Logout
+        </button>
+        <MenuOptionForm />
+      </>
+      
+    ) : (
+      <h2 style={{ margin: "30px 30px 30px 150px", padding: "30px" }}>
+        Welcome, Caterer. Please Log in!
+      </h2>
+    )}
+    
+  
 
   </div>
   );
