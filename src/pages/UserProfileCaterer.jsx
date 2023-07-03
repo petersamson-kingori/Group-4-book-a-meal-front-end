@@ -40,6 +40,7 @@ const UserProfile = () => {
     
     {caterer ? (
       <>
+         <MenuOptionForm />
   
         <button
           onClick={handleLogoutClick}
@@ -54,7 +55,7 @@ const UserProfile = () => {
         >
           Logout
         </button>
-        <MenuOptionForm />
+     
       </>
       
     ) : (
