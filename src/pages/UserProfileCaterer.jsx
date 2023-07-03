@@ -3,12 +3,12 @@ import { useAuth } from "./auth";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const UserProfile = () => {
-  const { user, logout } = useAuth();
+  const { user, caterer, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const redirectPath = location.state?.path || "/login_caterer";
 
-  console.log("User:", user);
+  console.log("Caterer:", caterer);
 
   function handleLogoutClick() {
     fetch("https://crave-masters-front-end.onrender.com/api/v1/logout", { method: "DELETE" })
@@ -25,7 +25,7 @@ const UserProfile = () => {
     {user ? (
       <>
         <h2 style={{ margin: "30px 30px 30px 250px", padding: "30px" }}>
-          Welcome, {user.username}!
+          Welcome, {caterer.username}!
         </h2>
         <button
           onClick={handleLogoutClick}
