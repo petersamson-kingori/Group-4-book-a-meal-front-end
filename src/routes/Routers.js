@@ -20,6 +20,7 @@ import UserProfileCaterer from "../pages/UserProfileCaterer";
 
 const Routers = () => {
   const [user, setUser] = useState(null);
+  const [caterer, setCaterer] = useState(null);
   return (
     <AuthProvider>
       <Routes>
@@ -37,7 +38,7 @@ const Routers = () => {
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/login_caterer" element={<LoginCaterer setUser={setUser} />} />
         <Route path="/register" element={<Register setUser={setUser} />} />
-        <Route path="/registerCaterer" element={<RegisterCaterer setUser={setUser} />} />
+        <Route path="/registerCaterer" element={<RegisterCaterer setCaterer={setCaterer} />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/reviews" element={<RequireAuth><Reviews /></RequireAuth>} />
         <Route path="/profile" element={<UserProfile user={user} setUser={setUser} />} />

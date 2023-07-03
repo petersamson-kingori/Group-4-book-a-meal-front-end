@@ -30,9 +30,9 @@ const Register = ({ setCaterer }) => {
       }),
     }).then((res) => {
       if (res.ok) {
-        res.json().then((data) => {
-          console.log(data);
-          setCaterer(data.caterer);
+        res.json().then((caterer) => {
+          console.log(caterer);
+          setCaterer(caterer);
           navigate("/login_caterer");
         });
       }
