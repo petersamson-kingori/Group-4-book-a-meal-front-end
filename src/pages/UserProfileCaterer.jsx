@@ -28,7 +28,7 @@ const UserProfile = () => {
         <h2 style={{ margin: "30px 30px 30px 250px", padding: "30px" }}>
           Welcome, {caterer.username}!
         </h2>
-        <MenuOptionForm />
+       
     
           
       </>
@@ -64,7 +64,14 @@ const UserProfile = () => {
         Welcome, Caterer. Please Log in!
       </h2>
     )}
-    
+    {caterer ? (
+      <>
+       <MenuOptionForm />
+      </>
+    ):(
+      <>
+      </>
+    )}
   
 
   </div>
