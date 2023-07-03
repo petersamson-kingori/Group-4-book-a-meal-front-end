@@ -29,20 +29,7 @@ const UserProfile = () => {
           Welcome, {caterer.username}!
         </h2>
     
-        <button
-          onClick={handleLogoutClick}
-          style={{
-            display: "inline-block",
-            marginRight: "30px",
-            backgroundColor: "#34BB78",
-            color: "white",
-            padding: "10px 20px",
-            borderRadius: "5px",
-          }}
-        >
-          Logout
-        </button>
-        <MenuOptionForm />
+          
       </>
       
     ) : (
@@ -53,10 +40,7 @@ const UserProfile = () => {
     
     {caterer ? (
       <>
-        <h2 style={{ margin: "30px 30px 30px 250px", padding: "30px" }}>
-          Welcome, {caterer.username}!
-        </h2>
-    
+  
         <button
           onClick={handleLogoutClick}
           style={{
