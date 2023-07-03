@@ -69,7 +69,7 @@ const UserProfile = () => {
   
 
   </div>
-  <div>
+  <div style={{ margin: "30px 30px 30px 150px", padding: "30px" }}>
   {caterer ? (
       <>
        <MenuOptionForm />
