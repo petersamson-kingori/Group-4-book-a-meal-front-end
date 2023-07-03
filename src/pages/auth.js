@@ -10,7 +10,7 @@ export function AuthProvider({ children }) {
     setUser(user);
   }
 
-  function login_caterer(catererData) {
+  function login_caterer(caterer) {
     setCaterer(caterer);
   }
 
