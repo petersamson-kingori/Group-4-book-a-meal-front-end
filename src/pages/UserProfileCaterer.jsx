@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth } from "./auth";
 import { useNavigate, useLocation } from "react-router-dom";
+import CreateMenuOptionForm from "./CreateMenuOptionForm"; 
 
 const UserProfile = () => {
   const { caterer, logout } = useAuth();
@@ -40,6 +41,7 @@ const UserProfile = () => {
         >
           Logout
         </button>
+        <CreateMenuOptionForm />
       </>
     ) : (
       <h2 style={{ margin: "30px 30px 30px 150px", padding: "30px" }}>
@@ -47,6 +49,7 @@ const UserProfile = () => {
       </h2>
     )}
     {/* Additional content for the user profile */}
+
   </div>
   );
 };
