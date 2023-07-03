@@ -15,7 +15,7 @@ export function AuthProvider({ children }) {
   }
 
   function login_caterer(catererData) {
-    setCaterer(catererData);
+    setCaterer(catererData.caterer);
   }
 
 
