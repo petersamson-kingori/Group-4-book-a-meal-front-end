@@ -82,7 +82,7 @@ const UserProfile = () => {
       </>
     )}
   </div>
-  <catererMenu  />
+  <CatererMenu  />
   </>
   );
 };

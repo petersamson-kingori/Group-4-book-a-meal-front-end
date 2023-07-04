@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useAuth } from './AuthContext';
+import { useAuth } from "./auth";
 
 const CatererMenu = () => {
   const [catererData, setCatererData] = useState(null);
