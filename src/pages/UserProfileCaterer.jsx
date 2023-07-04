@@ -71,7 +71,7 @@ const UserProfileCaterer = () => {
   
 
   </div>
-  <div style={{ display: "flex", justifyContent: "space-between", margin: "30px 30px 30px 150px", padding: "30px" }}>
+  <div style={{ display: "flex", justifyContent: "space-between", margin: "30px 30px 30px 30px", padding: "30px" }}>
   {caterer && (
     <>
       <CatererMenu />
