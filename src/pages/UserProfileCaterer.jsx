@@ -25,7 +25,7 @@ const UserProfileCaterer = () => {
 
   return (
     <>
-    <div style={{ display: "flex", alignItems: "center" }}>
+    <div style={{ display: "flex", justifyContent: "space-between" }}>
     {caterer ? (
       <>
         <h2 style={{ margin: "30px 30px 30px 250px", padding: "30px" }}>
