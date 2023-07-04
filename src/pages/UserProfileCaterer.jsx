@@ -29,9 +29,9 @@ const UserProfileCaterer = () => {
     {caterer ? (
       <>
         <h2 style={{ margin: "30px 30px 30px 250px", padding: "30px" }}>
-          Welcome, {caterer.business_name}!
+          Welcome Back, {caterer.business_name}!
         </h2>
-        <h3>{caterer.business_name}</h3>
+        <h3>Administrator:{caterer.name}</h3>
     
           
       </>
