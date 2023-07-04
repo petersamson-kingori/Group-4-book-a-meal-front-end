@@ -2,6 +2,8 @@ import React from "react";
 import { useAuth } from "./auth";
 import { useNavigate, useLocation } from "react-router-dom";
 import MenuOptionForm from "./MenuOptionForm"; 
+import CatererMenu from "./catererMenu";
+
 
 const UserProfile = () => {
   const { caterer, logout } = useAuth();
@@ -73,12 +75,14 @@ const UserProfile = () => {
   {caterer ? (
       <>
        <MenuOptionForm />
+       
       </>
     ):(
       <>
       </>
     )}
   </div>
+  <catererMenu  />
   </>
   );
 };
