@@ -7,26 +7,26 @@ import Helmet from "../components/Helmet/Helmet";
 import { useAuth } from "./auth";
 
 const Login = () => {
-  const [email, setemail] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const { login } = useAuth();
+  const { login_caterer } = useAuth();
   const location = useLocation();
-  const redirectPath = location.state?.path || "/profile";
+  const redirectPath = location.state?.path || "/profile_caterer";
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "https://group-4-book-a-meal-api.onrender.com/api/v1/login",
+        "https://group-4-book-a-meal-api.onrender.com/api/v1/login_caterer",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            user: {
+            caterer: {
               email,
               password,
             },
@@ -35,9 +35,9 @@ const Login = () => {
       );
 
       if (response.ok) {
-        const { user, jwt } = await response.json();
+        const { caterer, jwt } = await response.json();
         localStorage.setItem("token", jwt);
-        login(user);
+        login_caterer(caterer);
         navigate(redirectPath, { replace: true });
       } else {
         const errorData = await response.json();
@@ -50,9 +50,9 @@ const Login = () => {
 
   return (
     <>
-      <Helmet title="Login">
+      <Helmet title="Caterer Login">
         <div className="md:flex justify-center items-center md:mt-16 mt-12 mx-8">
-          <CommonSection title="Login" />
+          <CommonSection title="Caterer Login" />
 
           <section>
             <Container>
@@ -68,7 +68,7 @@ const Login = () => {
                       <input
                         type="text"
                         value={email}
-                        onChange={(e) => setemail(e.target.value)}
+                        onChange={(e) => setEmail(e.target.value)}
                       />
                     </div>
                     <div className="form__group">
@@ -82,7 +82,7 @@ const Login = () => {
                     </div>
                     <button className="addTOCart__btn">Login</button>
                   </form>
-                  <Link to="/register">
+                  <Link to="/registerCaterer">
                     Don't have an account? Create an account
                   </Link>
                 </Col>

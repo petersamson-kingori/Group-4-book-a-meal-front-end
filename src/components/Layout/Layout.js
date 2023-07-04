@@ -6,12 +6,15 @@ import Routes from "../../routes/Routers";
 
 import Carts from "../UI/cart/Carts.jsx";
 import { useSelector } from "react-redux";
+import { AuthProvider } from "../../pages/auth";
 
 const Layout = () => {
   const showCart = useSelector((state) => state.cartUi.cartIsVisible);
   return (
     <div>
-      <Header />
+      <AuthProvider> {/* Add the AuthProvider wrapper here */}
+        <Header />
+      </AuthProvider>
 
       {showCart && <Carts />}
 

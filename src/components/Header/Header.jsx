@@ -5,74 +5,24 @@ import { NavLink, Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { cartUiActions } from "../../store/shopping-cart/cartUiSlice";
 import "../../styles/header.css";
+//import { useAuth } from "../../pages/auth";
 
-// const nav__links = [
-//   {
-//     display: "Home",
-//     path: "/home",
-//   },
-//   {
-//     display: "Foods",
-//     path: "/foods",
-//   },
-//   {
-//     display: "Cart",
-//     path: "/cart",
-//   },
-//   {
-//     display: "Contact",
-//     path: "/contact",
-//   },
-//   {
-//     display: "Customer Reviews",
-//     path: "/reviews",
-//   },
-//   {
-//     display: "Logout",
-//     path: "/logout",
-//     onClick: {handleLogoutClick}
-//   },
-// ];
-
-const Header = ({user, setUser}) => {
+const Header = ({ user, setUser }) => {
   const menuRef = useRef(null);
   const headerRef = useRef(null);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const dispatch = useDispatch();
+
+   const navigate = useNavigate();
+  // const { logout } = useAuth();
+  // const location = useLocation();
+  // const redirectPath = location.state?.path || "/home";
 
   const toggleMenu = () => menuRef.current.classList.toggle("show__menu");
 
   const toggleCart = () => {
     dispatch(cartUiActions.toggle());
   };
-
-  const nav__links = [
-    {
-      display: "Home",
-      path: "/home",
-    },
-    {
-      display: "Foods",
-      path: "/foods",
-    },
-    {
-      display: "Cart",
-      path: "/cart",
-    },
-    {
-      display: "Contact",
-      path: "/contact",
-    },
-    {
-      display: "Customer Reviews",
-      path: "/reviews",
-    },
-    {
-      display: "Logout",
-      path: "/logout",
-      onClick: {handleLogoutClick}
-    },
-  ];
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -89,16 +39,71 @@ const Header = ({user, setUser}) => {
     return () => window.removeEventListener("scroll");
   }, []);
 
-  const navigate = useNavigate()
+  
+  
+   // NOt used remove this it breaks
+
   function handleLogoutClick() {
-      fetch("https://food-api-ivzo.onrender.com/logout", { method: "DELETE" })
-      .then((res) => {
-        if (res.ok) {
-          setUser(null);
-          navigate('/login')
-        }
-      });
+    fetch("https://crave-masters-front-end.onrender.com/logout", { method: "DELETE" }).then((res) => {
+      if (res.ok) {
+        setUser(null);
+        navigate("/login");
+      } else {
+        navigate("/home");
+      }
+    });
   }
+   // Not used remove this it breaks
+
+  
+
+  // function handleLogoutClick() {
+  //   fetch("https://crave-masters-front-end.onrender.com/api/v1/logout", { method: "DELETE" })
+  //     .then((res) => {
+  //       if (res.ok) {
+  //         logout();
+  //         navigate(redirectPath, { replace: true });
+          
+  //       }
+  //     });
+  // }
+
+
+  const nav__links = [
+    {
+      display: "Home",
+      path: "/home",
+      onClick: handleLogoutClick,
+    },
+    {
+      display: "Foods",
+      path: "/foods",
+    },
+    {
+      display: "Cart",
+      path: "/cart",
+    },
+    {
+      display: "Contact",
+      path: "/contact",
+    },
+    {
+      display: "For Caterers",
+      path: "/login_caterer",
+    },
+    // {
+    //   display: "Profile",
+    //   path: "/profile",
+    // },
+    // {
+    //   display: "Customer Reviews",
+    //   path: "/reviews",
+    // },
+    {
+      display: "Log in",
+      path: "/login",
+    },
+  ];
 
   return (
     <header className="header" ref={headerRef}>
@@ -116,9 +121,7 @@ const Header = ({user, setUser}) => {
                 <NavLink
                   to={item.path}
                   key={index}
-                  className={(navClass) =>
-                    navClass.isActive ? "active__menu" : ""
-                  }
+                  className={(navClass) => (navClass.isActive ? "active__menu" : "")}
                 >
                   {item.display}
                 </NavLink>
@@ -134,9 +137,13 @@ const Header = ({user, setUser}) => {
             </span>
 
             <span className="user">
-              <Link to="/login">
-                <i class="ri-user-line"></i>
-              </Link>
+              {user ? (
+                <span>{user.username}</span>
+              ) : (
+                <Link to="/profile">
+                  <i class="ri-user-line"></i>
+                </Link>
+              )}
             </span>
 
             <span className="mobile__menu" onClick={toggleMenu}>
