@@ -28,7 +28,7 @@ const UserProfileCaterer = () => {
     <div style={{ display: "flex", justifyContent: "space-between" }}>
     {caterer ? (
       <>
-        <h2 style={{ margin: "30px 30px 5px 150px", padding: "30px" }}>
+        <h2 style={{ margin: "30px 30px 5px 150px", padding: "10px" }}>
           Welcome Back, {caterer.business_name}!
         </h2>
         
