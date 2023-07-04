@@ -31,7 +31,7 @@ const UserProfileCaterer = () => {
         <h2 style={{ margin: "30px 30px 30px 250px", padding: "30px" }}>
           Welcome Back, {caterer.business_name}!
         </h2>
-        <h3>Administrator:{caterer.name}</h3>
+        <h1>Administrator:{caterer.username}</h1>
     
           
       </>
