@@ -76,6 +76,7 @@ const UserProfileCaterer = () => {
     <>
       <CatererMenu />
       <MenuOptionForm />
+      <CatererMenu />
     </>
   )}
 </div>
