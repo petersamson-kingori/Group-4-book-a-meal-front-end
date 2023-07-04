@@ -5,7 +5,7 @@ import MenuOptionForm from "./MenuOptionForm";
 import CatererMenu from "./catererMenu";
 
 
-const UserProfile = () => {
+const UserProfileCaterer = () => {
   const { caterer, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -29,7 +29,7 @@ const UserProfile = () => {
     {caterer ? (
       <>
         <h2 style={{ margin: "30px 30px 30px 250px", padding: "30px" }}>
-          Welcome,!
+          Welcome, {caterer.business_name}!
         </h2>
         <h3>{caterer.business_name}</h3>
     
@@ -87,4 +87,4 @@ const UserProfile = () => {
   );
 };
 
-export default UserProfile;
+export default UserProfileCaterer;
