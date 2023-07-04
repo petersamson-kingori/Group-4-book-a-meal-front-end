@@ -25,13 +25,13 @@ const UserProfileCaterer = () => {
 
   return (
     <>
-    <div>
+    <div style={{ display: "flex", justifyContent: "space-between" }}>
     {caterer ? (
       <>
         <h2 style={{ margin: "30px 30px 30px 250px", padding: "30px" }}>
           Welcome Back, {caterer.business_name}!
         </h2>
-        <h4>Administrator:{caterer.username}</h4>
+        
     
           
       </>
@@ -71,6 +71,7 @@ const UserProfileCaterer = () => {
   
 
   </div>
+  <h4>Administrator:{caterer.username}</h4>
   <div style={{ display: "flex", justifyContent: "space-between", margin: "30px 100px 30px 100px", padding: "30px" }}>
   {caterer && (
     <>
