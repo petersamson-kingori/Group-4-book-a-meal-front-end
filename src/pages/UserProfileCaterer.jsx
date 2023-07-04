@@ -71,7 +71,9 @@ const UserProfileCaterer = () => {
   
 
   </div>
-  <h4>Administrator:{caterer.username}</h4>
+  <h4 style={{ margin: "30px 30px 30px 150px", padding: "30px" }}>
+    Administrator:{caterer.username}
+    </h4>
   <div style={{ display: "flex", justifyContent: "space-between", margin: "30px 100px 30px 100px", padding: "30px" }}>
   {caterer && (
     <>
