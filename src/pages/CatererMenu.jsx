@@ -6,15 +6,23 @@ const CatererMenu = () => {
   const { caterer } = useAuth();
 
   useEffect(() => {
-    if (caterer) {
-      // Make an API request to fetch the caterer data
-      fetch(`https://group-4-book-a-meal-api.onrender.com/api/v1/caterers/${caterer.id}`) // Use caterer.id to construct the URL
+    const token = localStorage.getItem("token");
+    if (token) {
+     
+  
+      // Make an API request to fetch the caterer data with authorization
+      fetch(`https://group-4-book-a-meal-api.onrender.com/api/v1/caterers/${caterer.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
         .then(response => response.json())
         .then(data => setCatererData(data.caterer))
         .catch(error => console.error('Error fetching caterer data:', error));
     }
   }, [caterer]);
 
+  
   return (
     <div>
       {catererData && (
