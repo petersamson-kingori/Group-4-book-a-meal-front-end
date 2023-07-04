@@ -2,7 +2,7 @@ import React from "react";
 import { useAuth } from "./auth";
 import { useNavigate, useLocation } from "react-router-dom";
 import MenuOptionForm from "./MenuOptionForm"; 
-import CatererMenu from "./catererMenu";
+import CatererMenu from "./CatererMenu";
 
 
 const UserProfileCaterer = () => {
