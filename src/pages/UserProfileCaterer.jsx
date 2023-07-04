@@ -75,6 +75,7 @@ const UserProfileCaterer = () => {
   {caterer ? (
       <>
        <MenuOptionForm />
+       <CatererMenu />
        
       </>
     ):(
@@ -82,7 +83,7 @@ const UserProfileCaterer = () => {
       </>
     )}
   </div>
-  <CatererMenu  />
+ 
   </>
   );
 };
