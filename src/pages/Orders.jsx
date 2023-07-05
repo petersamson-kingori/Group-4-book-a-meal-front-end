@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-
+const Orders = () => {
   return (
-    <>
     <div>
-        <h2>Orders</h2>
+      <h2>Orders</h2>
     </div>
-    </>
-  )
+  );
+};
 
-export default MenuOptionForm;
+export default Orders;
