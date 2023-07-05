@@ -49,8 +49,8 @@ const UserProfileCaterer = () => {
       <div style={{ display: "flex", margin: "30px 50px" }}>
   {caterer && (
     <>
-      <CatererMenu />
       <MenuOptionForm />
+      <CatererMenu />
       <Orders />
     </>
   )}
