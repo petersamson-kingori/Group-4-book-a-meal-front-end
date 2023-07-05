@@ -1,72 +1,81 @@
 import React, { useState } from 'react';
+import { useAuth } from "./auth";
 
-const CreateMenuOptionForm = () => {
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [price, setPrice] = useState('');
+const MenuOptionForm = ({ menuId }) => {
+  const { caterer } = useAuth();
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch('/api/menu-options', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+    const token = localStorage.getItem("token");
+    if (token) {
+      const menuOptionData = {
+        menu_option: {
           name,
           description,
-          price,
-          // Assuming you have the `menu_id` available here
-          //menu_id: menuId,
-        }),
-      });
+          price
+        }
+      };
 
-      if (response.ok) {
-        const data = await response.json();
-        // Handle success, e.g., display success message or redirect to menu details page
-        console.log('Menu option created:', data);
-      } else {
-        throw new Error('Failed to create menu option');
-      }
-    } catch (error) {
-      // Handle error, e.g., display error message
-      console.error('Error creating menu option:', error);
+      fetch(`https://group-4-book-a-meal-api.onrender.com/api/v1/caterers/${caterer.id}/menus/${menuId}/menu_options`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(menuOptionData)
+      })
+        .then(response => response.json())
+        .then(data => {
+          // Handle success
+          console.log("Menu option created:", data);
+          // Reset form fields
+          setName("");
+          setDescription("");
+          setPrice("");
+        })
+        .catch(error => console.error('Error creating menu option:', error));
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="description">Description:</label>
-        <textarea
-          id="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="price">Price:</label>
-        <input
-          type="number"
-          id="price"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        />
-      </div>
-      <button type="submit">Create Menu Option</button>
-    </form>
+    <div>
+      <h3>Add Menu Option</h3>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="description">Description:</label>
+          <input
+            type="text"
+            id="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="price">Price:</label>
+          <input
+            type="number"
+            id="price"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 };
 
-export default CreateMenuOptionForm;
+export default MenuOptionForm;
