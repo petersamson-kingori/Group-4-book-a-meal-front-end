@@ -42,34 +42,37 @@ const MenuOptionForm = ({ menuId }) => {
   };
 
   return (
-    <div>
+    <div style={{ backgroundColor: "#20c997", padding: "20px", borderRadius: "5px" }}>
       <h3>Add Menu Option</h3>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div style={{ marginBottom: "15px" }}>
           <label htmlFor="name">Name:</label>
           <input
             type="text"
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            style={{ border: "none", borderBottom: "1px solid #ccc", outline: "none" }}
           />
         </div>
-        <div>
+        <div style={{ marginBottom: "15px" }}>
           <label htmlFor="description">Description:</label>
           <input
             type="text"
             id="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            style={{ border: "none", borderBottom: "1px solid #ccc", outline: "none" }}
           />
         </div>
-        <div>
+        <div style={{ marginBottom: "15px" }}>
           <label htmlFor="price">Price:</label>
           <input
             type="number"
             id="price"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
+            style={{ border: "none", borderBottom: "1px solid #ccc", outline: "none" }}
           />
         </div>
         <button type="submit">Submit</button>
