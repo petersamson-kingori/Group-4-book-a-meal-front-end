@@ -44,7 +44,7 @@ const MenuOptionForm = ({ menuId }) => {
   return (
     <div>
       <h3>Add Menu Option</h3>
-      <form onSubmit={handleSubmit} style={{ backgroundColor: "#d6f1e4", padding: "20px", borderRadius: "5px" }}>
+      <form className="form mb-5" onSubmit={handleSubmit} >
   <div>
     <label htmlFor="name">Name:</label>
     <input
