@@ -43,46 +43,47 @@ const MenuOptionForm = ({ menuId }) => {
 
   return (
     <div>
-      <h2>Menu</h2>
+       <h2>Menu</h2>
       <form className="form mb-5" onSubmit={handleSubmit}>
-        <h5 className="md:text-2xl text-xl my-4 font-semibold text-gray-800">
-          Add Option
-        </h5>
-        <div className="form__group">
-          <label htmlFor="name">Name:</label>
-          <br />
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
-          />
-        </div>
-        <div className="form__group">
-          <label htmlFor="description">Description:</label>
-          <br />
-          <input
-            type="text"
-            id="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
-          />
-        </div>
-        <div className="form__group">
-          <label htmlFor="price">Price:</label>
-          <br />
-          <input
-            type="number"
-            id="price"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
-          />
-        </div>
-        <button className="addTOCart__btn">Submit</button>
-      </form>
+  <h5 className="md:text-2xl text-xl my-4 font-semibold text-gray-800">
+    Add Option
+  </h5>
+  <div className="form__group">
+    <label htmlFor="name">Name:</label>
+    <br />
+    <input
+      type="text"
+      id="name"
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+      style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
+    />
+  </div>
+  <div className="form__group">
+    <label htmlFor="description">Description:</label>
+    <br />
+    <input
+      type="text"
+      id="description"
+      value={description}
+      onChange={(e) => setDescription(e.target.value)}
+      style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
+    />
+  </div>
+  <div className="form__group">
+    <label htmlFor="price">Price:</label>
+    <br />
+    <input
+      type="number"
+      id="price"
+      value={price}
+      onChange={(e) => setPrice(e.target.value)}
+      style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
+    />
+  </div>
+  <button className="addTOCart__btn">Submit</button>
+</form>
+
     </div>
   );
 };
