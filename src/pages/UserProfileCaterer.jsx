@@ -27,11 +27,11 @@ const UserProfileCaterer = () => {
   return (
     <div style={{ margin: "30px" }}>
       <h2 style={{ marginBottom: "10px" }}>
-        {caterer ? `Dashboard: ${caterer.business_name}!` : "Welcome, Caterer. Please Log in!"}
+        {caterer ? `Dashboard: ${caterer.business_name}` : "Welcome, Caterer. Please Log in!"}
       </h2>
       {caterer && (
         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
-          <h4 style={{ margin: "0", padding: "0" }}>Welcome back, {caterer.username}</h4>
+          <h4 style={{ margin: "0", padding: "0" }}>Welcome back, {caterer.username}!</h4>
           <button
             onClick={handleLogoutClick}
             style={{
