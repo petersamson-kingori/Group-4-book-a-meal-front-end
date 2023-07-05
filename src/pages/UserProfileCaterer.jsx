@@ -46,7 +46,7 @@ const UserProfileCaterer = () => {
           </button>
         </div>
       )}
-      <div style={{ display: "flex", margin: "30px 50px" }}>
+      <div style={{ display: "flex", margin: "30px 10px" }}>
   {caterer && (
     <>
       <MenuOptionForm />
