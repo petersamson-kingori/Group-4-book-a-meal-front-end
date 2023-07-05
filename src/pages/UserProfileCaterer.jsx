@@ -45,14 +45,14 @@ const UserProfileCaterer = () => {
           </button>
         </div>
       )}
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        {caterer && (
-          <>
-            <MenuOptionForm />
-            <CatererMenu />
-          </>
-        )}
-      </div>
+      <div style={{ display: "flex", justifyContent: "space-between", margin: "30px 100px" }}>
+  {caterer && (
+    <>
+      <MenuOptionForm />
+      <CatererMenu />
+    </>
+  )}
+</div>
     </div>
   );
 };
