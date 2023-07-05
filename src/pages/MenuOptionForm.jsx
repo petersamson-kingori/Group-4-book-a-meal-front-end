@@ -42,7 +42,7 @@ const MenuOptionForm = ({ menuId }) => {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column"}}>
+    <div>
       <h2>Menu</h2>
       <form className="form mb-5" onSubmit={handleSubmit}>
         <h5 className="md:text-2xl text-xl my-4 font-semibold text-gray-800">
