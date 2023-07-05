@@ -3,6 +3,7 @@ import { useAuth } from "./auth";
 import { useNavigate, useLocation } from "react-router-dom";
 import MenuOptionForm from "./MenuOptionForm"; 
 import CatererMenu from "./CatererMenu";
+import Orders from "./Orders";
 
 
 const UserProfileCaterer = () => {
@@ -50,6 +51,7 @@ const UserProfileCaterer = () => {
     <>
       <CatererMenu />
       <MenuOptionForm />
+      <Orders />
     </>
   )}
 </div>

@@ -43,7 +43,6 @@ const MenuOptionForm = ({ menuId }) => {
 
   return (
     <div>
-      <h3>Add Menu Option</h3>
       <form className="form mb-5" onSubmit={handleSubmit}>
   <h1 className="md:text-2xl text-xl my-4 font-semibold text-gray-800">
     Add Menu Option
