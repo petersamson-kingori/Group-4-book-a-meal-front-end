@@ -23,69 +23,37 @@ const UserProfileCaterer = () => {
       });
   }
 
+ 
   return (
-    <>
-    <div style={{ display: "flex", justifyContent: "space-between" }}>
-    {caterer ? (
-      <>
-        <h2 style={{ margin: "30px 30px 5px 150px", padding: "10px" }}>
-          Dashboard: {caterer.business_name}!
-        </h2>
-        
-    
-          
-      </>
-      
-    ) : (
-      <h2 style={{ margin: "30px 30px 5px 150px", padding: "30px" }}>
-        Welcome, Caterer. Please Log in!
+    <div style={{ margin: "30px" }}>
+      <h2 style={{ marginBottom: "10px" }}>
+        {caterer ? `Dashboard: ${caterer.business_name}!` : "Welcome, Caterer. Please Log in!"}
       </h2>
-    )}
-    
-    {caterer ? (
-      <>
-         
-  
-        <button
-          onClick={handleLogoutClick}
-          style={{
-            display: "inline-block",
-            marginRight: "30px",
-            backgroundColor: "#34BB78",
-            color: "white",
-            padding: "10px 20px",
-            borderRadius: "5px",
-          }}
-        >
-          Logout
-        </button>
-     
-      </>
-      
-    ) : (
-      <h2 style={{ margin: "30px 30px 5px 150px", padding: "30px" }}>
-        Welcome, Caterer. Please Log in!
-      </h2>
-    )}
-   
-  
-
-  </div>
-  <h4 style={{ margin: "5px 30px 30px 150px", padding: "10px" }}>
-    Welcome back, {caterer.username}
-    </h4>
-  <div style={{ display: "flex", justifyContent: "space-between", margin: "30px 100px 30px 100px", padding: "30px" }}>
-  {caterer && (
-    <>
- 
-      <MenuOptionForm />
-      <CatererMenu />
-    </>
-  )}
-</div>
-
- 
-  </>
+      {caterer && (
+        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
+          <h4 style={{ margin: "0", padding: "0" }}>Welcome back, {caterer.username}</h4>
+          <button
+            onClick={handleLogoutClick}
+            style={{
+              backgroundColor: "#34BB78",
+              color: "white",
+              padding: "10px 20px",
+              borderRadius: "5px",
+            }}
+          >
+            Logout
+          </button>
+        </div>
+      )}
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        {caterer && (
+          <>
+            <MenuOptionForm />
+            <CatererMenu />
+          </>
+        )}
+      </div>
+    </div>
   );
 };
 
