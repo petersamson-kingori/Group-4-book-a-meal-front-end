@@ -44,9 +44,13 @@ const MenuOptionForm = ({ menuId }) => {
   return (
     <div>
       <h3>Add Menu Option</h3>
-      <form className="form mb-5" onSubmit={handleSubmit} >
-  <div>
+      <form className="form mb-5" onSubmit={handleSubmit}>
+  <h1 className="md:text-2xl text-xl my-4 font-semibold text-gray-800">
+    Add Menu Option
+  </h1>
+  <div className="form__group">
     <label htmlFor="name">Name:</label>
+    <br />
     <input
       type="text"
       id="name"
@@ -55,8 +59,9 @@ const MenuOptionForm = ({ menuId }) => {
       style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
     />
   </div>
-  <div>
+  <div className="form__group">
     <label htmlFor="description">Description:</label>
+    <br />
     <input
       type="text"
       id="description"
@@ -65,8 +70,9 @@ const MenuOptionForm = ({ menuId }) => {
       style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
     />
   </div>
-  <div>
+  <div className="form__group">
     <label htmlFor="price">Price:</label>
+    <br />
     <input
       type="number"
       id="price"
@@ -75,7 +81,7 @@ const MenuOptionForm = ({ menuId }) => {
       style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
     />
   </div>
-  <button type="submit">Submit</button>
+  <button className="addTOCart__btn">Submit</button>
 </form>
 
     </div>
