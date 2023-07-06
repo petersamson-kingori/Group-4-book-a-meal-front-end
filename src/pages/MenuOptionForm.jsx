@@ -75,7 +75,7 @@ const MenuOptionForm = ({ menuId }) => {
   >
     <option value="">Select a day</option>
     <option value="Sunday">Sunday</option>
-    <option value="Monday">Monday</option>
+    <option value="Monday Menu">Monday</option>
     <option value="Tuesday">Tuesday</option>
     <option value="Wednesday">Wednesday</option>
     <option value="Thursday">Thursday</option>
