@@ -20,6 +20,43 @@ const CatererMenu = () => {
     }
   }, [caterer]);
 
+  const handleDeleteMenuOption = (menuId, menuOptionId) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      // Make an API request to delete the menu option with authorization
+      fetch(`https://group-4-book-a-meal-api.onrender.com/api/v1/caterers/${caterer.id}/menus/${menuId}/menu_options/${menuOptionId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+        .then(response => {
+          if (response.ok) {
+            // Refresh the caterer data after successful deletion
+            fetchCatererData();
+          } else {
+            throw new Error('Error deleting menu option');
+          }
+        })
+        .catch(error => console.error('Error deleting menu option:', error));
+    }
+  };
+
+  const fetchCatererData = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      // Make an API request to fetch the updated caterer data with authorization
+      fetch(`https://group-4-book-a-meal-api.onrender.com/api/v1/caterers/${caterer.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+        .then(response => response.json())
+        .then(data => setCatererData(data.caterer))
+        .catch(error => console.error('Error fetching caterer data:', error));
+    }
+  };
+
   return (
     <div>
       {catererData && (
@@ -38,6 +75,21 @@ const CatererMenu = () => {
               >
                 <h3>{menu.name}</h3>
                 <p>{menu.description}</p>
+                <ul>
+                  {menu.menu_options.map(menuOption => (
+                    <li key={menuOption.id}>
+                      <p>{menuOption.name}</p>
+                      <p>{menuOption.description}</p>
+                      <button
+                        onClick={() =>
+                          handleDeleteMenuOption(menu.id, menuOption.id)
+                        }
+                      >
+                        Delete
+                      </button>
+                    </li>
+                  ))}
+                </ul>
               </li>
             ))}
           </ul>
