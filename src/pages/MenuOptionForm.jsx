@@ -56,31 +56,12 @@ const MenuOptionForm = () => {
 
   return (
     <div>
-      <h2 style={{ paddingLeft: '50px' }}>Menu</h2>
+       <h2 style={{ paddingLeft: '50px' }}>Menu</h2>
       <form className="form mb-5" onSubmit={handleSubmit}>
-        <h5 className="md:text-2xl text-xl my-4 font-semibold text-gray-800">
-          Add Option
-        </h5>
-        <div className="form__group">
-          <label htmlFor="day">Select a day:</label>
-          <br />
-          <select
-            id="day"
-            value={day}
-            onChange={(e) => setDay(e.target.value)}
-            style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
-          >
-            <option value="">Select a day</option>
-            <option value="Sunday Menu">Sunday</option>
-            <option value="Monday Menu">Monday</option>
-            <option value="Tuesday Menu">Tuesday</option>
-            <option value="Wednesday Menu">Wednesday</option>
-            <option value="Thursday Menu">Thursday</option>
-            <option value="Friday Menu">Friday</option>
-            <option value="Saturday Menu">Saturday</option>
-          </select>
-        </div>
-        <div className="form__group">
+  <h5 className="md:text-2xl text-xl my-4 font-semibold text-gray-800">
+    Add Option
+  </h5>
+  <div className="form__group">
           <label htmlFor="name">Select a menu:</label>
           <br />
           <select
@@ -97,9 +78,31 @@ const MenuOptionForm = () => {
             ))}
           </select>
         </div>
-        {/* Rest of the form fields */}
-        <button className="addTOCart__btn">Submit</button>
-      </form>
+  <div className="form__group">
+    <label htmlFor="description">Description:</label>
+    <br />
+    <input
+      type="text"
+      id="description"
+      value={description}
+      onChange={(e) => setDescription(e.target.value)}
+      style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
+    />
+  </div>
+  <div className="form__group">
+    <label htmlFor="price">Price:</label>
+    <br />
+    <input
+      type="number"
+      id="price"
+      value={price}
+      onChange={(e) => setPrice(e.target.value)}
+      style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
+    />
+  </div>
+  <button className="addTOCart__btn">Submit</button>
+</form>
+
     </div>
   );
 };
