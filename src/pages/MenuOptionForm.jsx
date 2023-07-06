@@ -12,7 +12,7 @@ const MenuOptionForm = ({ menuId }) => {
     const menuName = `${selectedDay} Menu`;
     const menu = caterer.menus.find(menu => menu.name === menuName);
     if (menu) {
-      setDay(menuName);
+      setDay(selectedDay);
       return menu.id;
     } else {
       setDay("");
@@ -33,7 +33,7 @@ const MenuOptionForm = ({ menuId }) => {
           day
         }
       };
-      const menuId = getMenuIdByDay(day); 
+      const menuId = getMenuIdByDay(caterer); 
 
       
       fetch(`https://group-4-book-a-meal-api.onrender.com/api/v1/caterers/${caterer.id}/menus/${menuId}/menu_options`, {
