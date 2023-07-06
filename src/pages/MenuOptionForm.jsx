@@ -33,10 +33,10 @@ const MenuOptionForm = ({ menuId }) => {
           day
         }
       };
-      const menuId = getMenuIdByDay(caterer); 
+      const menuId = getMenuIdByDay(day); 
 
       
-      fetch(`https://group-4-book-a-meal-api.onrender.com/api/v1/caterers/${caterer.id}/menus/${menu.id}/menu_options`, {
+      fetch(`https://group-4-book-a-meal-api.onrender.com/api/v1/caterers/${caterer.id}/menus/${menuId}/menu_options`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -75,7 +75,7 @@ const MenuOptionForm = ({ menuId }) => {
   >
     <option value="">Select a day</option>
     <option value="Sunday">Sunday</option>
-    <option value="Monday Menu">Monday</option>
+    <option value="Monday">Monday</option>
     <option value="Tuesday">Tuesday</option>
     <option value="Wednesday">Wednesday</option>
     <option value="Thursday">Thursday</option>
