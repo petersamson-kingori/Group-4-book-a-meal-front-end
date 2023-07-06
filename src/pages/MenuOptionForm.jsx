@@ -8,6 +8,11 @@ const MenuOptionForm = ({ menuId }) => {
   const [price, setPrice] = useState("");
   const [day, setDay] = useState("");
 
+  const getMenuIdByDay = (selectedDay) => {
+    const menu = caterer.menus.find(menu => menu.name === `${selectedDay} Menu`);
+    return menu ? menu.id : null;
+  };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +26,9 @@ const MenuOptionForm = ({ menuId }) => {
           price
         }
       };
+      const menuId = getMenuIdByDay(day); 
 
+      if (menuId) {
       fetch(`https://group-4-book-a-meal-api.onrender.com/api/v1/caterers/${caterer.id}/menus/${menuId}/menu_options`, {
         method: "POST",
         headers: {
@@ -41,6 +48,7 @@ const MenuOptionForm = ({ menuId }) => {
         })
         .catch(error => console.error('Error creating menu option:', error));
     }
+  }
   };
 
   return (
