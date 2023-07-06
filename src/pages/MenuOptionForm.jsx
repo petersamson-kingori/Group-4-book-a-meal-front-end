@@ -12,7 +12,7 @@ const MenuOptionForm = ({ menuId }) => {
     const menuName = `${selectedDay} Menu`;
     const menu = caterer.menus.find(menu => menu.name === menuName);
     if (menu) {
-      setDay(selectedDay);
+      setDay(menuName);
       return menu.id;
     } else {
       setDay("");
