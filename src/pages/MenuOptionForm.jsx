@@ -26,9 +26,9 @@ const MenuOptionForm = ({ menuId }) => {
           price
         }
       };
-      const menuId = getMenuIdByDay(caterer); 
+      const menuId = getMenuIdByDay(day); 
 
-      if (menuId) {
+      
       fetch(`https://group-4-book-a-meal-api.onrender.com/api/v1/caterers/${caterer.id}/menus/${menuId}/menu_options`, {
         method: "POST",
         headers: {
@@ -48,7 +48,6 @@ const MenuOptionForm = ({ menuId }) => {
         })
         .catch(error => console.error('Error creating menu option:', error));
     }
-  }
   };
 
   return (
@@ -68,7 +67,7 @@ const MenuOptionForm = ({ menuId }) => {
     style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
   >
     <option value="">Select a day</option>
-    <option value="Sunday Menu">Sunday</option>
+    <option value="Sunday">Sunday</option>
     <option value="Monday">Monday</option>
     <option value="Tuesday">Tuesday</option>
     <option value="Wednesday">Wednesday</option>
