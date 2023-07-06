@@ -20,10 +20,10 @@ const MenuOptionForm = () => {
     if (token) {
       const menuOptionData = {
         menu_option: {
-          name,
+          name: name,
           description,
           price,
-          day
+          day: `${name} Menu`
         }
       };
 
