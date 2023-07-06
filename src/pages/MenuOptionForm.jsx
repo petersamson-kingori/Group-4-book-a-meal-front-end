@@ -23,7 +23,7 @@ const MenuOptionForm = ({ menuId }) => {
         }
       };
 
-      fetch(`https://group-4-book-a-meal-api.onrender.com/api/v1/caterers/${caterer.id}/menus/${menuId}/menu_options`, {
+      fetch(`https://group-4-book-a-meal-api.onrender.com/api/v1/caterers/${caterer.id}/menus/${caterer.menus.id}/menu_options`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
