@@ -83,7 +83,7 @@ const MenuOptionForm = () => {
     <br />
     <input
       type="text"
-      id="description"
+      id="name"
       value={name}
       onChange={(e) => setName(e.target.value)}
       style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
