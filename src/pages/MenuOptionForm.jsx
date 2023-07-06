@@ -26,7 +26,7 @@ const MenuOptionForm = ({ menuId }) => {
           price
         }
       };
-      const menuId = getMenuIdByDay(); 
+      const menuId = getMenuIdByDay(caterer); 
 
       if (menuId) {
       fetch(`https://group-4-book-a-meal-api.onrender.com/api/v1/caterers/${caterer.id}/menus/${menuId}/menu_options`, {
