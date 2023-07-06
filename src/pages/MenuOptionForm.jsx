@@ -9,7 +9,7 @@ const MenuOptionForm = ({ menuId }) => {
   const [day, setDay] = useState("");
 
   const getMenuIdByDay = (selectedDay) => {
-    const menuName = `${selectedDay} Menu`;
+    const menuName = selectedDay ;
     const menu = caterer.menus.find(menu => menu.name === menuName);
     if (menu) {
       setDay(selectedDay);
@@ -74,13 +74,13 @@ const MenuOptionForm = ({ menuId }) => {
     style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
   >
     <option value="">Select a day</option>
-    <option value="Sunday">Sunday</option>
-    <option value="Monday">Monday</option>
-    <option value="Tuesday">Tuesday</option>
-    <option value="Wednesday">Wednesday</option>
-    <option value="Thursday">Thursday</option>
-    <option value="Friday">Friday</option>
-    <option value="Saturday">Saturday</option>
+    <option value="Sunday Menu">Sunday</option>
+    <option value="Monday Menu">Monday</option>
+    <option value="Tuesday Menu">Tuesday</option>
+    <option value="Wednesday Menu">Wednesday</option>
+    <option value="Thursday Menu">Thursday</option>
+    <option value="Friday Menu">Friday</option>
+    <option value="Saturday Menu">Saturday</option>
   </select>
     <label htmlFor="name">Name:</label>
     <br />
