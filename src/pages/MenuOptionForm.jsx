@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { useAuth } from "./auth";
 
-const MenuOptionForm = ({ menuId }) => {
+const MenuOptionForm = () => {
   const { caterer } = useAuth();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [day, setDay] = useState("");
-
+  
+  const getMenuIdByName = (menuName) => {
+    const menu = caterer.menus.find(menu => menu.name === menuName);
+    return menu ? menu.id : null;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,24 +27,30 @@ const MenuOptionForm = ({ menuId }) => {
         }
       };
 
-      fetch(`https://group-4-book-a-meal-api.onrender.com/api/v1/caterers/${caterer.id}/menus/${caterer.menus.id}/menu_options`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify(menuOptionData)
-      })
-        .then(response => response.json())
-        .then(data => {
-          // Handle success
-          console.log("Menu option created:", data);
-          // Reset form fields
-          setName("");
-          setDescription("");
-          setPrice("");
+      const menuId = getMenuIdByName(name); // Get the menu ID
+
+      if (menuId) {
+        fetch(`https://group-4-book-a-meal-api.onrender.com/api/v1/caterers/${caterer.id}/menus/${menuId}/menu_options`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify(menuOptionData)
         })
-        .catch(error => console.error('Error creating menu option:', error));
+          .then(response => response.json())
+          .then(data => {
+            // Handle success
+            console.log("Menu option created:", data);
+            // Reset form fields
+            setName("");
+            setDescription("");
+            setPrice("");
+          })
+          .catch(error => console.error('Error creating menu option:', error));
+      } else {
+        console.error('Menu not found');
+      }
     }
   };
 
@@ -52,18 +62,34 @@ const MenuOptionForm = ({ menuId }) => {
     Add Option
   </h5>
   <div className="form__group">
-  <label htmlFor="day">Select a day:</label>
-  <br />
-    <label htmlFor="name">Name:</label>
+          <label htmlFor="day">Select a menu:</label>
+          <br />
+          <select
+            id="day"
+            value={day}
+            onChange={(e) => setDay(e.target.value)}
+            style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
+          >
+            <option value="">Select a menu</option>
+            {caterer.menus.map(menu => (
+              <option key={menu.id} value={menu.name}>
+                {menu.name}
+             </option>
+            ))}
+          </select>
+        </div>
+  <div className="form__group">
+    <label htmlFor="description">Name:</label>
     <br />
     <input
       type="text"
-      id="name"
+      id="description"
       value={name}
       onChange={(e) => setName(e.target.value)}
       style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
     />
   </div>
+        
   <div className="form__group">
     <label htmlFor="description">Description:</label>
     <br />
