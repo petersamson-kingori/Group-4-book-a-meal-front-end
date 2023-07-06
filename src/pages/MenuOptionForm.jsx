@@ -6,6 +6,8 @@ const MenuOptionForm = ({ menuId }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
+  const [day, setDay] = useState("");
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,7 +18,8 @@ const MenuOptionForm = ({ menuId }) => {
         menu_option: {
           name,
           description,
-          price
+          price,
+          day
         }
       };
 
@@ -49,6 +52,23 @@ const MenuOptionForm = ({ menuId }) => {
     Add Option
   </h5>
   <div className="form__group">
+  <label htmlFor="day">Select a day:</label>
+  <br />
+  <select
+    id="day"
+    value={day}
+    onChange={(e) => setDay(e.target.value)}
+    style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
+  >
+    <option value="">Select a day</option>
+    <option value="Sunday">Sunday</option>
+    <option value="Monday">Monday</option>
+    <option value="Tuesday">Tuesday</option>
+    <option value="Wednesday">Wednesday</option>
+    <option value="Thursday">Thursday</option>
+    <option value="Friday">Friday</option>
+    <option value="Saturday">Saturday</option>
+  </select>
     <label htmlFor="name">Name:</label>
     <br />
     <input
