@@ -23,7 +23,8 @@ const MenuOptionForm = ({ menuId }) => {
         menu_option: {
           name,
           description,
-          price
+          price,
+          day: menuName
         }
       };
       const menuId = getMenuIdByDay(day); 
