@@ -9,8 +9,8 @@ const MenuOptionForm = ({ menuId }) => {
   const [day, setDay] = useState("");
 
   const getMenuIdByDay = (selectedDay) => {
-    const menuName = selectedDay ;
-    const menu = caterer.menus.find(menu => menu.name === menuName);
+    const menuName = selectedDay;
+    const menu = caterer.menus.find((menu) => menu.name === menuName);
     if (menu) {
       setDay(selectedDay);
       return menu.id;
