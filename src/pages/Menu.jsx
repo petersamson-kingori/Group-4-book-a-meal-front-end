@@ -102,8 +102,18 @@ const Menu = ({ user }) => {
                 <span style={{ marginRight: '10px' }}>
                   {option.name} - ${option.price}
                 </span>
-                <button onClick={() => handleAddToBasket(option)}>Add to Basket</button>
-                <button onClick={() => handleRemoveFromBasket(option.id)}>Remove</button>
+                <button style={{
+              backgroundColor: '#34BB78',
+              color: 'white',
+              padding: '10px 20px',
+              borderRadius: '5px',
+            }} onClick={() => handleAddToBasket(option)}>Add to Basket</button>
+                <button style={{
+              backgroundColor: '#34BB78',
+              color: 'white',
+              padding: '10px 20px',
+              borderRadius: '5px',
+            }} onClick={() => handleRemoveFromBasket(option.id)}>Remove</button>
               </div>
             ))}
           </div>
