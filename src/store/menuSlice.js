@@ -10,30 +10,18 @@ const menuSlice = createSlice({
       return action.payload;
     },
     addToBasket: (state, action) => {
-        // Add the selected item to the basket
-        const { menuOptionId, optionId } = action.payload;
-        const menuOption = state.find((option) => option.id === menuOptionId);
-        if (menuOption) {
-          const selectedOption = menuOption.menu_options.find((option) => option.id === optionId);
-          if (selectedOption) {
-            selectedOption.inBasket = true;
-          }
-        }
-      },
-      removeFromBasket: (state, action) => {
-        // Remove the selected item from the basket
-        const { menuOptionId, optionId } = action.payload;
-        const menuOption = state.find((option) => option.id === menuOptionId);
-        if (menuOption) {
-          const selectedOption = menuOption.menu_options.find((option) => option.id === optionId);
-          if (selectedOption) {
-            selectedOption.inBasket = false;
-          }
-        }
-      },
+      // Add the item to the basket
+      const { item } = action.payload;
+      state.push(item);
+    },
+    removeFromBasket: (state, action) => {
+      // Remove the item from the basket
+      const { itemId } = action.payload;
+      return state.filter((item) => item.id !== itemId);
+    },
   },
 });
 
-export const { setMenuOptions, addToBasket, removeFromBaske } = menuSlice.actions;
+export const { setMenuOptions, addToBasket, removeFromBasket } = menuSlice.actions;
 
 export default menuSlice.reducer;
