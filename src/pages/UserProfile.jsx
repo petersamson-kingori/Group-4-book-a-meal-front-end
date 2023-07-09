@@ -2,12 +2,14 @@ import React from 'react';
 import { useAuth } from './auth';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Menu from './Menu';
+import { useSelector } from 'react-redux';
 
 const UserProfile = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const redirectPath = location.state?.path || '/login';
+  const basketItems = useSelector((state) => state.basket);
 
   console.log('User:', user);
 
@@ -43,6 +45,17 @@ const UserProfile = () => {
           <Menu user={user} /> {/* Pass user object as a prop */}
         </div>
       )}
+       {user && (
+      <div style={{ margin: '0 250px', padding: '30px' }}>
+        <Menu user={user} /> {/* Pass user object as a prop */}
+        <h3>Basket:</h3>
+        <ul>
+          {basketItems.map((item) => (
+            <li key={item.id}>{item.name} - ${item.price}</li>
+          ))}
+        </ul>
+      </div>
+    )}
       {/* Additional content for the user profile */}
     </div>
   );
