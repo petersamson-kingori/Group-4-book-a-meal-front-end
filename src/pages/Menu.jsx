@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMenuOptions } from '../store/menuSlice';
 import { addToBasket, removeFromBasket } from '../store/basketSlice';
@@ -7,6 +7,7 @@ const Menu = ({ user }) => {
   const dispatch = useDispatch();
   const menuOptions = useSelector((state) => state.menu);
   const basketItems = useSelector((state) => state.basket);
+  const [shippingLocation, setShippingLocation] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,6 +53,34 @@ const Menu = ({ user }) => {
     dispatch(removeFromBasket(itemId));
   };
 
+  const handleSubmit = async () => {
+    const orderData = {
+      userId: user.id,
+      items: basketItems.map((item) => ({ id: item.id, name: item.name, price: item.price })),
+      shippingLocation,
+    };
+
+    try {
+      const response = await fetch('your-backend-endpoint-url', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData),
+      });
+
+      if (response.ok) {
+        // Handle success case
+        console.log('Order submitted successfully');
+      } else {
+        // Handle error case
+        console.log('Failed to submit order:', response.status);
+      }
+    } catch (error) {
+      console.log('Error submitting order:', error);
+    }
+  };
+
   return (
     <div>
       <h4>Menu Options for {currentDay}</h4>
@@ -86,6 +115,13 @@ const Menu = ({ user }) => {
           <li key={item.id}>{item.name} - ${item.price}</li>
         ))}
       </ul>
+      <h4>Shipping Location</h4>
+      <input
+        type="text"
+        value={shippingLocation}
+        onChange={(e) => setShippingLocation(e.target.value)}
+      />
+      <button onClick={handleSubmit}>Submit Order</button>
     </div>
   );
 };
