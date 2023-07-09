@@ -21,15 +21,13 @@ const UserProfile = () => {
   }
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
-      {user ? (
-        <>
-          <h2 style={{ margin: '30px 30px 30px 250px', padding: '30px' }}>Welcome, {user.username}!</h2>
+    <div>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '30px' }}>
+        <h2>Welcome, {user ? user.username : 'Guest'}</h2>
+        {user && (
           <button
             onClick={handleLogoutClick}
             style={{
-              display: 'inline-block',
-              marginRight: '30px',
               backgroundColor: '#34BB78',
               color: 'white',
               padding: '10px 20px',
@@ -38,10 +36,12 @@ const UserProfile = () => {
           >
             Logout
           </button>
+        )}
+      </div>
+      {user && (
+        <div style={{ margin: '0 250px' }}>
           <Menu user={user} /> {/* Pass user object as a prop */}
-        </>
-      ) : (
-        <h2 style={{ margin: '30px 30px 30px 250px', padding: '30px' }}>Welcome, Guest. Please Log in!</h2>
+        </div>
       )}
       {/* Additional content for the user profile */}
     </div>
