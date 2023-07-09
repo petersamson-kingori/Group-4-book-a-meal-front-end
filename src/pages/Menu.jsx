@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMenuOptions } from '../store/menuSlice';
-//import { addToBasket, removeFromBasket } from '../store/basketSlice';
 
 const Menu = ({ user }) => {
   const dispatch = useDispatch();
@@ -46,27 +45,24 @@ const Menu = ({ user }) => {
   return (
     <div>
       <h4>Menu Options for {currentDay}</h4>
-      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-        {filteredMenuOptions.map((menuOption) => (
-          <div
-            key={menuOption.id}
-            style={{
-              border: '1px solid lightgrey',
-              borderRadius: '5px',
-              padding: '10px',
-              marginBottom: '10px',
-              marginRight: '10px',
-            }}
-          >
-            <p>Caterer: {menuOption.caterer.business_name}</p>
+      {filteredMenuOptions.map((menuOption) => (
+        <div key={menuOption.id}>
+          <p>Caterer: {menuOption.caterer.business_name}</p>
+          <ul>
             {menuOption.menu_options.map((option) => (
-              <span key={option.id} style={{ marginRight: '10px' }}>
+              <li key={option.id}
+              style={{
+                  border: "1px solid lightgrey",
+                  borderRadius: "5px",
+                  padding: "10px",
+                  marginBottom: "10px"
+                }}>
                 {option.name} - ${option.price}
-              </span>
+              </li>
             ))}
-          </div>
-        ))}
-      </div>
+          </ul>
+        </div>
+      ))}
     </div>
   );
 };
