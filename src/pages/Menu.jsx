@@ -50,7 +50,13 @@ const Menu = ({ user }) => {
           <p>Caterer: {menuOption.caterer.business_name}</p>
           <ul>
             {menuOption.menu_options.map((option) => (
-              <li key={option.id}>
+              <li key={option.id}
+              style={{
+                border: "1px solid lightgrey",
+                borderRadius: "5px",
+                padding: "10px",
+                marginBottom: "10px"
+              }}>
                 {option.name} - ${option.price}
               </li>
             ))}
