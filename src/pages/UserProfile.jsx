@@ -22,7 +22,7 @@ const UserProfile = () => {
 
   return (
     <div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '30px',  margin: '0 250px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between',  margin: '0 250px' }}>
         <h2>Welcome, {user ? user.username : 'Guest'}</h2>
         {user && (
           <button

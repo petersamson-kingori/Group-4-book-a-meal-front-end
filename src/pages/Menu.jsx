@@ -44,7 +44,7 @@ const Menu = ({ user }) => {
 
   return (
     <div>
-      <h2>Menu Options for {currentDay}</h2>
+      <h3>Menu Options for {currentDay}</h3>
       {filteredMenuOptions.map((menuOption) => (
         <div key={menuOption.id}>
           <p>Caterer: {menuOption.caterer.business_name}</p>
