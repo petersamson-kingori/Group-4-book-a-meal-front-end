@@ -60,10 +60,11 @@ const Menu = ({ user }) => {
             <p>Caterer: {menuOption.caterer.business_name}</p>
             {menuOption.menu_options.map((option) => (
               <div
-                key={`${menuOption.id}-${option.id}`} // Updated key prop
+                key={`${menuOption.id}-${option.id}`}
                 style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}
               >
-                <span style={{ marginRight: '10px' }}>{option.name} - ${option.price}</span>
+                <span style={{ marginRight: '10px' }}>{option.name}</span>
+                <span>${option.price}</span>
                 <button onClick={() => dispatch(addToBasket(option))}>Add to Basket</button>
                 <button onClick={() => dispatch(removeFromBasket(option))}>Remove</button>
               </div>
