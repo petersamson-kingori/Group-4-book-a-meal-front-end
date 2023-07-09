@@ -1,93 +1,52 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setMenuOptions } from '../store/menuSlice';
-import { addToBasket, removeFromBasket } from '../store/basketSlice';
+import React from 'react';
+import { useAuth } from './auth';
+import { useNavigate, useLocation } from 'react-router-dom';
+import Menu from './Menu';
 
-const Menu = ({ user }) => {
-  const dispatch = useDispatch();
-  const menuOptions = useSelector((state) => state.menu);
-  const basketItems = useSelector((state) => state.basket);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          `https://group-4-book-a-meal-api.onrender.com/api/v1/users/${user?.id}/user_menu_options`,
-          {
-            headers: {
-              Authorization: `Bearer ${user?.token}`,
-            },
-          }
-        );
+const UserProfile = () => {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const redirectPath = location.state?.path || '/login';
 
-        if (response.ok) {
-          const data = await response.json();
-          dispatch(setMenuOptions(data));
-        } else {
-          // Handle unauthorized or other error responses
-          console.log('Error fetching menu options:', response.status);
-        }
-      } catch (error) {
-        console.log('Error fetching menu options:', error);
+  console.log('User:', user);
+
+  function handleLogoutClick() {
+    fetch('https://crave-masters-front-end.onrender.com/api/v1/logout', { method: 'DELETE' }).then((res) => {
+      if (res.ok) {
+        logout();
+        navigate(redirectPath, { replace: true });
       }
-    };
-
-    if (user) {
-      fetchData();
-    }
-  }, [dispatch, user]);
-
-  // Get the current day of the week
-  const currentDate = new Date();
-  const currentDay = currentDate.toLocaleDateString('en-US', { weekday: 'long' });
-
-  // Filter the menu options for the current day
-  const filteredMenuOptions = menuOptions.filter((menuOption) => menuOption.name === currentDay);
-
-  const handleAddToBasket = (item) => {
-    dispatch(addToBasket(item));
-  };
-
-  const handleRemoveFromBasket = (itemId) => {
-    dispatch(removeFromBasket(itemId));
-  };
+    });
+  }
 
   return (
     <div>
-      <h4>Menu Options for {currentDay}</h4>
-      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-        {filteredMenuOptions.map((menuOption) => (
-          <div
-            key={menuOption.id}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '30px',  margin: '0 250px' }}>
+        <h2>Welcome, {user ? user.username : 'Guest'}</h2>
+        {user && (
+          <button
+            onClick={handleLogoutClick}
             style={{
-              border: '1px solid lightgrey',
+              backgroundColor: '#34BB78',
+              color: 'white',
+              padding: '10px 20px',
               borderRadius: '5px',
-              padding: '10px',
-              marginBottom: '10px',
-              marginRight: '10px',
             }}
           >
-            <p>Caterer: {menuOption.caterer.business_name}</p>
-            {menuOption.menu_options.map((option) => (
-              <div key={option.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}>
-                <span style={{ marginRight: '10px' }}>
-                  {option.name} - ${option.price}
-                </span>
-                <button onClick={() => handleAddToBasket(option)}>Add to Basket</button>
-                <button onClick={() => handleRemoveFromBasket(option.id)}>Remove</button>
-              </div>
-            ))}
-          </div>
-        ))}
+            Logout
+          </button>
+        )}
       </div>
-      <h4>Basket</h4>
-      <ul>
-        {basketItems.map((item) => (
-          <li key={item.id}>{item.name} - ${item.price}</li>
-        ))}
-      </ul>
+      {user && (
+        <div style={{ margin: '0 250px', padding: '30px' }}>
+          <Menu user={user} /> {/* Pass user object as a prop */}
+        </div>
+      )}
+      {/* Additional content for the user profile */}
     </div>
   );
 };
 
-export default Menu;
+export default UserProfile;
