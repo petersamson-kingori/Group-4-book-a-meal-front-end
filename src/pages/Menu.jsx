@@ -8,15 +8,15 @@ const Menu = ({ user }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await fetch(
-          `https://group-4-book-a-meal-api.onrender.com/api/v1/users/${user?.id}/user_menu_options`,
-          {
-            headers: {
-              Authorization: `Bearer ${user?.token}`,
-            },
-          }
-        );
+        try {
+          const response = await fetch(
+            `https://group-4-book-a-meal-api.onrender.com/api/v1/users/${user?.id}/user_menu_options`,
+            {
+              headers: {
+                Authorization: `Bearer ${user?.token}`,
+              },
+            }
+          );
 
         if (response.ok) {
           const data = await response.json();
