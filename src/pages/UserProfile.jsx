@@ -40,11 +40,6 @@ const UserProfile = () => {
           </button>
         )}
       </div>
-      {user && (
-        <div style={{ margin: '0 250px', padding: '30px' }}>
-          <Menu user={user} /> {/* Pass user object as a prop */}
-        </div>
-      )}
        {user && (
       <div style={{ margin: '0 250px', padding: '30px' }}>
         <Menu user={user} /> {/* Pass user object as a prop */}
