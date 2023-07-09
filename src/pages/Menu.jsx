@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setMenuOptions, addToBasket, removeFromBasket } from '../store/menuSlice';
+import { setMenuOptions } from '../store/menuSlice';
+import { addToBasket, removeFromBasket } from '../store/basketSlice';
 
 const Menu = ({ user }) => {
   const dispatch = useDispatch();
   const menuOptions = useSelector((state) => state.menu);
+  const basketItems = useSelector((state) => state.basket);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,6 +44,14 @@ const Menu = ({ user }) => {
   // Filter the menu options for the current day
   const filteredMenuOptions = menuOptions.filter((menuOption) => menuOption.name === currentDay);
 
+  const handleAddToBasket = (item) => {
+    dispatch(addToBasket(item));
+  };
+
+  const handleRemoveFromBasket = (itemId) => {
+    dispatch(removeFromBasket(itemId));
+  };
+
   return (
     <div>
       <h4>Menu Options for {currentDay}</h4>
@@ -59,19 +69,23 @@ const Menu = ({ user }) => {
           >
             <p>Caterer: {menuOption.caterer.business_name}</p>
             {menuOption.menu_options.map((option) => (
-              <div
-                key={`${menuOption.id}-${option.id}`}
-                style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}
-              >
-                <span style={{ marginRight: '10px' }}>{option.name}</span>
-                <span>${option.price}</span>
-                <button onClick={() => dispatch(addToBasket(option))}>Add to Basket</button>
-                <button onClick={() => dispatch(removeFromBasket(option))}>Remove</button>
+              <div key={option.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}>
+                <span style={{ marginRight: '10px' }}>
+                  {option.name} - ${option.price}
+                </span>
+                <button onClick={() => handleAddToBasket(option)}>Add to Basket</button>
+                <button onClick={() => handleRemoveFromBasket(option.id)}>Remove</button>
               </div>
             ))}
           </div>
         ))}
       </div>
+      <h4>Basket</h4>
+      <ul>
+        {basketItems.map((item) => (
+          <li key={item.id}>{item.name} - ${item.price}</li>
+        ))}
+      </ul>
     </div>
   );
 };
