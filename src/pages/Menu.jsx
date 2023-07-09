@@ -35,25 +35,53 @@ const Menu = ({ user }) => {
     }
   }, [dispatch, user]);
 
+  
+  // Get the current day of the week
+  const currentDate = new Date();
+  const currentDay = currentDate.toLocaleDateString('en-US', { weekday: 'long' });
+
+  // Filter the menu options for the current day
+  const filteredMenuOptions = menuOptions.filter((menuOption) => menuOption.name === currentDay);
+
   return (
     <div>
-      <h2>Menu Options</h2>
-      {menuOptions.map((menuOption) => (
-        <div key={menuOption.id}>
-          <h3>{menuOption.name}</h3>
-          <p>{menuOption.description}</p>
-          <p>Caterer: {menuOption.caterer.business_name}</p>
-          <ul>
-            {menuOption.menu_options.map((option) => (
-              <li key={option.id}>
-                {option.name} - ${option.price}
-              </li>
-            ))}
-          </ul>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '30px' }}>
+        <h2>Welcome, {user ? user.username : 'Guest'}</h2>
+        {user && (
+          <button
+            onClick={handleLogoutClick}
+            style={{
+              backgroundColor: '#34BB78',
+              color: 'white',
+              padding: '10px 20px',
+              borderRadius: '5px',
+            }}
+          >
+            Logout
+          </button>
+        )}
+      </div>
+      {user && (
+        <div style={{ margin: '0 250px' }}>
+          <h2>Menu Options for {currentDay}</h2>
+          {filteredMenuOptions.map((menuOption) => (
+            <div key={menuOption.id}>
+              <h3>{menuOption.name}</h3>
+              <p>{menuOption.description}</p>
+              <p>Caterer: {menuOption.caterer.business_name}</p>
+              <ul>
+                {menuOption.menu_options.map((option) => (
+                  <li key={option.id}>
+                    {option.name} - ${option.price}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-      ))}
+      )}
+      {/* Additional content for the user profile */}
     </div>
   );
 };
-
 export default Menu;
