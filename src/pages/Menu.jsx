@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setMenuOptions } from '../store/menuSlice';
-import { addToBasket, removeFromBasket } from '../store/basketSlice';
+import { setMenuOptions, addToBasket, removeFromBasket } from '../store/menuSlice';
 
 const Menu = ({ user }) => {
   const dispatch = useDispatch();
@@ -47,27 +46,30 @@ const Menu = ({ user }) => {
     <div>
       <h4>Menu Options for {currentDay}</h4>
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-      {filteredMenuOptions.map((menuOption) => (
-  <div
-    key={menuOption.id}
-    style={{
-      border: '1px solid lightgrey',
-      borderRadius: '5px',
-      padding: '10px',
-      marginBottom: '10px',
-      marginRight: '10px',
-    }}
-  >
-    <p>Caterer: {menuOption.caterer.business_name}</p>
-    {menuOption.menu_options.map((option) => (
-      <div key={option.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}>
-        <span style={{ marginRight: '10px' }}>{option.name} - ${option.price}</span>
-        <button onClick={() => dispatch(addToBasket(option))}>Add to Basket</button>
-        <button onClick={() => dispatch(removeFromBasket(option))}>Remove</button>
-      </div>
-    ))}
-  </div>
-))}
+        {filteredMenuOptions.map((menuOption) => (
+          <div
+            key={menuOption.id}
+            style={{
+              border: '1px solid lightgrey',
+              borderRadius: '5px',
+              padding: '10px',
+              marginBottom: '10px',
+              marginRight: '10px',
+            }}
+          >
+            <p>Caterer: {menuOption.caterer.business_name}</p>
+            {menuOption.menu_options.map((option) => (
+              <div
+                key={`${menuOption.id}-${option.id}`} // Updated key prop
+                style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}
+              >
+                <span style={{ marginRight: '10px' }}>{option.name} - ${option.price}</span>
+                <button onClick={() => dispatch(addToBasket(option))}>Add to Basket</button>
+                <button onClick={() => dispatch(removeFromBasket(option))}>Remove</button>
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
     </div>
   );
