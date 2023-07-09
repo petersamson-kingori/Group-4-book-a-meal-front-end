@@ -45,24 +45,27 @@ const Menu = ({ user }) => {
   return (
     <div>
       <h4>Menu Options for {currentDay}</h4>
-      {filteredMenuOptions.map((menuOption) => (
-        <div key={menuOption.id}>
-          <p>Caterer: {menuOption.caterer.business_name}</p>
-          <ul>
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        {filteredMenuOptions.map((menuOption) => (
+          <div
+            key={menuOption.id}
+            style={{
+              border: '1px solid lightgrey',
+              borderRadius: '5px',
+              padding: '10px',
+              marginBottom: '10px',
+              marginRight: '10px',
+            }}
+          >
+            <p>Caterer: {menuOption.caterer.business_name}</p>
             {menuOption.menu_options.map((option) => (
-              <li key={option.id}
-              style={{
-                border: "1px solid lightgrey",
-                borderRadius: "5px",
-                padding: "10px",
-                marginBottom: "10px"
-              }}>
+              <span key={option.id} style={{ marginRight: '10px' }}>
                 {option.name} - ${option.price}
-              </li>
+              </span>
             ))}
-          </ul>
-        </div>
-      ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
