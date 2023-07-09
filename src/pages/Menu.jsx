@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMenuOptions } from '../store/menuSlice';
+import { addToCart } from '../store/cartSlice';
 
 const Menu = ({ user }) => {
   const dispatch = useDispatch();
@@ -42,6 +43,10 @@ const Menu = ({ user }) => {
   // Filter the menu options for the current day
   const filteredMenuOptions = menuOptions.filter((menuOption) => menuOption.name === currentDay);
 
+  const handleAddToCart = (menuOption) => {
+    dispatch(addToCart(menuOption));
+  };
+
   return (
     <div>
       <h4>Menu Options for {currentDay}</h4>
@@ -59,9 +64,12 @@ const Menu = ({ user }) => {
           >
             <p>Caterer: {menuOption.caterer.business_name}</p>
             {menuOption.menu_options.map((option) => (
-              <span key={option.id} style={{ marginRight: '10px' }}>
-                {option.name} - ${option.price}
-              </span>
+              <div key={option.id} style={{ display: 'flex', alignItems: 'center' }}>
+                <span style={{ marginRight: '10px' }}>
+                  {option.name} - ${option.price}
+                </span>
+                <button onClick={() => handleAddToCart(option)}>Add to Cart</button>
+              </div>
             ))}
           </div>
         ))}
