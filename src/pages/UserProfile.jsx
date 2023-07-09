@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth } from "./auth";
 import { useNavigate, useLocation } from "react-router-dom";
+import Menu from "./Menu";
 
 const UserProfile = () => {
   const { user, logout } = useAuth();
@@ -40,6 +41,7 @@ const UserProfile = () => {
         >
           Logout
         </button>
+        <Menu />
       </>
     ) : (
       <h2 style={{ margin: "30px 30px 30px 250px", padding: "30px" }}>
