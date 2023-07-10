@@ -1,4 +1,3 @@
-// store/basketSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 const basketSlice = createSlice({
@@ -9,8 +8,8 @@ const basketSlice = createSlice({
       state.push(action.payload);
     },
     removeFromBasket: (state, action) => {
-      const itemId = action.payload;
-      return state.filter((item) => item.id !== itemId);
+      const menuOptionId = action.payload;
+      return state.filter((menuOption) => menuOption.id !== menuOptionId);
     },
   },
 });

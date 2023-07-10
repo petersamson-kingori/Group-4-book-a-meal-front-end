@@ -45,18 +45,23 @@ const Menu = ({ user }) => {
   // Filter the menu options for the current day
   const filteredMenuOptions = menuOptions.filter((menuOption) => menuOption.name === currentDay);
 
-  const handleAddToBasket = (item) => {
-    dispatch(addToBasket(item));
+  const handleAddToBasket = (menuOption) => {
+    dispatch(addToBasket(menuOption));
   };
 
-  const handleRemoveFromBasket = (itemId) => {
-    dispatch(removeFromBasket(itemId));
+  const handleRemoveFromBasket = (menuOption) => {
+    dispatch(removeFromBasket(menuOption));
   };
 
   const handleSubmit = async () => {
     const orderData = {
       userId: user.id,
-      items: basketItems.map((item) => ({ id: item.id, name: item.name, price: item.price })),
+      items: basketItems.map((item) => ({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        menuOptionId: item.menuOptionId, // Add the menu option ID to the order data
+      })),
       shippingLocation,
     };
 
