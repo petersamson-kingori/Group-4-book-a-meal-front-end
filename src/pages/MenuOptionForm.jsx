@@ -30,7 +30,8 @@ const MenuOptionForm = ({ menuId }) => {
           name,
           description,
           price,
-          day
+          day,
+          imageUrl
         }
       };
       const menuId = getMenuIdByDay(day); 
@@ -114,6 +115,18 @@ const MenuOptionForm = ({ menuId }) => {
       style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
     />
   </div>
+  <div className="form__group">
+    <label htmlFor="imageUrl">Image URL:</label>
+    <br />
+    <input
+      type="text"
+      id="imageUrl"
+      value={imageUrl}
+      onChange={(e) => setImageUrl(e.target.value)}
+      style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
+    />
+  </div>
+
   <button className="addTOCart__btn">Submit</button>
 </form>
 
