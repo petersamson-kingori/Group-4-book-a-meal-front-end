@@ -80,7 +80,13 @@ const CatererMenu = () => {
                     <li key={menuOption.id}>
                       <p>{menuOption.name}</p>
                       <p>{menuOption.description}</p>
-                      <button
+                      <button style={{
+              backgroundColor: 'transparent', // Set the background color to transparent
+              color: '#5CD88F', // Set the text color to the green color
+              padding: '10px 20px',
+              borderRadius: '5px',
+              border: '1px solid #5CD88F', 
+            }}
                         onClick={() =>
                           handleDeleteMenuOption(menu.id, menuOption.id)
                         }
