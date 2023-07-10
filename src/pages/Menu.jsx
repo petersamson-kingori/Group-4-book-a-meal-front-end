@@ -142,14 +142,19 @@ const Menu = ({ user }) => {
         value={shippingLocation}
         onChange={(e) => setShippingLocation(e.target.value)}
       />
-      <button  style={{
-              backgroundColor: '#5CD88F', // Change the background color to a lighter shade of green
-              color: 'white',
-              padding: '10px 20px',
-              borderRadius: '5px',
-              border: 'none', // Remove the button outline
-              marginRight: '5px',
-            }}onClick={handleSubmit}>Submit Order</button>
+     <button
+  style={{
+    backgroundColor: '#5CD88F',
+    color: 'white',
+    padding: '8px 16px', // Adjust the padding values to make the button smaller
+    borderRadius: '5px',
+    border: 'none',
+    marginRight: '5px',
+  }}
+  onClick={handleSubmit}
+>
+  Submit Order
+</button>
     </div>
   );
 };
