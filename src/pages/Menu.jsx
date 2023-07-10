@@ -60,8 +60,8 @@ const Menu = ({ user }) => {
         id: menuOption.id,
         name: menuOption.name,
         price: menuOption.price,
-        caterer: menuOption.caterer?.business_name, // Add the caterer business name
-        menu: menuOption.description, // Add the menu description
+        caterer: menuOption.caterer?.business_name,
+
       })),
       shippingLocation,
     };
@@ -71,6 +71,7 @@ const Menu = ({ user }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${user?.token}`,
         },
         body: JSON.stringify(orderData),
       });
