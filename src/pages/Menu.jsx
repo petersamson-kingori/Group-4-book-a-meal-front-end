@@ -68,7 +68,7 @@ const Menu = ({ user }) => {
     };
 
     try {
-      const response = await fetch('your-backend-endpoint-url', {
+      const response = await fetch('https://group-4-book-a-meal-api.onrender.com/api/v1/orders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
