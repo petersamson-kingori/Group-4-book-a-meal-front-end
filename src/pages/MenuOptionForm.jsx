@@ -123,7 +123,7 @@ const MenuOptionForm = ({ menuId }) => {
             id="imageUrl"
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
-            style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
+            style={{ width: '200px', height: '200px', objectFit: 'cover', borderRadius: '5px' }}
           />
         </div>
 
