@@ -33,7 +33,7 @@ const UserProfile = () => {
               color: '#E10600', // Set the text color to the green color
               padding: '10px 20px',
               borderRadius: '5px',
-              border: '1px solid #5CD88F', 
+              border: '1px solid #E10600', 
             }}
           >
             Logout
