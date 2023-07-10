@@ -55,17 +55,18 @@ const Menu = ({ user }) => {
 
   const handleSubmit = async () => {
     const orderData = {
-      userId: user.id,
-      email: user.email,
-      items: basketItems.map((menuOption) => ({
-        id: menuOption.id,
-        name: menuOption.name,
-        price: menuOption.price,
-        caterer: menuOption.caterer?.business_name,
-
-      })),
-      shippingLocation,
+      order: {
+        userId: user.id,
+        email: user.email,
+        items: basketItems.map((menuOption) => ({
+          id: menuOption.id,
+          name: menuOption.name,
+          price: menuOption.price,
+        })),
+        shippingLocation,
+      },
     };
+  
 
     try {
       const response = await fetch('https://group-4-book-a-meal-api.onrender.com/api/v1/orders', {
