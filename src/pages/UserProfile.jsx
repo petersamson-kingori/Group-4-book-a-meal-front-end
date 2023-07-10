@@ -29,12 +29,11 @@ const UserProfile = () => {
           <button
             onClick={handleLogoutClick}
             style={{
-              backgroundColor: '#5CD88F', // Change the background color to a lighter shade of green
-              color: 'white',
+              backgroundColor: 'transparent', // Set the background color to transparent
+              color: '#E10600', // Set the text color to the green color
               padding: '10px 20px',
               borderRadius: '5px',
-              border: 'none', // Remove the button outline
-              marginRight: '5px',
+              border: '1px solid #5CD88F', 
             }}
           >
             Logout
