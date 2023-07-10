@@ -60,7 +60,7 @@ const Menu = ({ user }) => {
         id: menuOption.id,
         name: menuOption.name,
         price: menuOption.price,
-        caterer: menuOption.caterer.business_name, // Add the caterer business name
+        caterer: menuOption.caterer?.business_name, // Add the caterer business name
         menu: menuOption.description, // Add the menu description
       })),
       shippingLocation,
