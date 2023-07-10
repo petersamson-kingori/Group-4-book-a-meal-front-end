@@ -111,16 +111,19 @@ const Menu = ({ user }) => {
                   {option.name} - ${option.price}
                 </span>
                 <button style={{
-              backgroundColor: '#34BB78',
+              backgroundColor: '#5CD88F', // Change the background color to a lighter shade of green
               color: 'white',
               padding: '10px 20px',
               borderRadius: '5px',
+              border: 'none', // Remove the button outline
+              marginRight: '5px',
             }} onClick={() => handleAddToBasket(option)}>Add to Basket</button>
                 <button style={{
-              backgroundColor: '#34BB78',
-              color: 'white',
+              backgroundColor: 'transparent', // Set the background color to transparent
+              color: '#5CD88F', // Set the text color to the green color
               padding: '10px 20px',
               borderRadius: '5px',
+              border: '1px solid #5CD88F', 
             }} onClick={() => handleRemoveFromBasket(option.id)}>Remove</button>
               </div>
             ))}
