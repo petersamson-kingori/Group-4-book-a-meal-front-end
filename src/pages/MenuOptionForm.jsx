@@ -7,6 +7,7 @@ const MenuOptionForm = ({ menuId }) => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [day, setDay] = useState("");
+  const [imageUrl, setImageUrl] = useState(""); // Add imageUrl state
 
   const getMenuIdByDay = (selectedDay) => {
     const menuName = selectedDay;
@@ -31,12 +32,11 @@ const MenuOptionForm = ({ menuId }) => {
           description,
           price,
           day,
-          imageUrl
+          imageUrl // Include imageUrl in menu_optionData
         }
       };
-      const menuId = getMenuIdByDay(day); 
+      const menuId = getMenuIdByDay(day);
 
-      
       fetch(`https://group-4-book-a-meal-api.onrender.com/api/v1/caterers/${caterer.id}/menus/${menuId}/menu_options`, {
         method: "POST",
         headers: {
@@ -60,76 +60,75 @@ const MenuOptionForm = ({ menuId }) => {
 
   return (
     <div>
-       <h2 style={{ paddingLeft: '50px' }}>Menu</h2>
+      <h2 style={{ paddingLeft: '50px' }}>Menu</h2>
       <form className="form mb-5" onSubmit={handleSubmit}>
-  <h5 className="md:text-2xl text-xl my-4 font-semibold text-gray-800">
-    Add Option
-  </h5>
-  <div className="form__group">
-  <label htmlFor="day">Select a day:</label>
-  <br />
-  <select
-    id="day"
-    value={day}
-    onChange={(e) => setDay(e.target.value)}
-    style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
-  >
-    <option value="">Select a day</option>
-    <option value="Sunday">Sunday</option>
-    <option value="Monday">Monday</option>
-    <option value="Tuesday">Tuesday</option>
-    <option value="Wednesday">Wednesday</option>
-    <option value="Thursday">Thursday</option>
-    <option value="Friday">Friday</option>
-    <option value="Saturday">Saturday</option>
-  </select>
-    <label htmlFor="name">Name:</label>
-    <br />
-    <input
-      type="text"
-      id="name"
-      value={name}
-      onChange={(e) => setName(e.target.value)}
-      style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
-    />
-  </div>
-  <div className="form__group">
-    <label htmlFor="description">Description:</label>
-    <br />
-    <input
-      type="text"
-      id="description"
-      value={description}
-      onChange={(e) => setDescription(e.target.value)}
-      style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
-    />
-  </div>
-  <div className="form__group">
-    <label htmlFor="price">Price:</label>
-    <br />
-    <input
-      type="number"
-      id="price"
-      value={price}
-      onChange={(e) => setPrice(e.target.value)}
-      style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
-    />
-  </div>
-  <div className="form__group">
-    <label htmlFor="imageUrl">Image URL:</label>
-    <br />
-    <input
-      type="text"
-      id="imageUrl"
-      value={imageUrl}
-      onChange={(e) => setImageUrl(e.target.value)}
-      style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
-    />
-  </div>
+        <h5 className="md:text-2xl text-xl my-4 font-semibold text-gray-800">
+          Add Option
+        </h5>
+        <div className="form__group">
+          <label htmlFor="day">Select a day:</label>
+          <br />
+          <select
+            id="day"
+            value={day}
+            onChange={(e) => setDay(e.target.value)}
+            style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
+          >
+            <option value="">Select a day</option>
+            <option value="Sunday">Sunday</option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+          </select>
+          <label htmlFor="name">Name:</label>
+          <br />
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
+          />
+        </div>
+        <div className="form__group">
+          <label htmlFor="description">Description:</label>
+          <br />
+          <input
+            type="text"
+            id="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
+          />
+        </div>
+        <div className="form__group">
+          <label htmlFor="price">Price:</label>
+          <br />
+          <input
+            type="number"
+            id="price"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
+          />
+        </div>
+        <div className="form__group">
+          <label htmlFor="imageUrl">Image URL:</label>
+          <br />
+          <input
+            type="text"
+            id="imageUrl"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+            style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
+          />
+        </div>
 
-  <button className="addTOCart__btn">Submit</button>
-</form>
-
+        <button className="addTOCart__btn">Submit</button>
+      </form>
     </div>
   );
 };
