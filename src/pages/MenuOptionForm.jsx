@@ -60,7 +60,7 @@ const MenuOptionForm = ({ menuId }) => {
 
   return (
     <div>
-      <h2 style={{ paddingLeft: '50px' }}>Menu</h2>
+      <h2 style={{ paddingLeft: '100px' }}>Menu</h2>
       <form className="form mb-5" onSubmit={handleSubmit}>
         <h5 className="md:text-2xl text-xl my-4 font-semibold text-gray-800">
           Add Option
