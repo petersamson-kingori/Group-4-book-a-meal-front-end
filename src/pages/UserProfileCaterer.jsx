@@ -32,7 +32,7 @@ const UserProfileCaterer = () => {
       </h2>
       {caterer && (
         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
-          <h4 style={{ margin: "0", padding: "0" }}>Welcome back, {caterer.username}!</h4>
+          <h4 style={{ margin: "100", padding: "0" }}>Welcome back, {caterer.username}!</h4>
           <button
             onClick={handleLogoutClick}
             style={{
