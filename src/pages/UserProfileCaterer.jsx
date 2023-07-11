@@ -50,7 +50,7 @@ const UserProfileCaterer = () => {
       )}
 <div style={{ 
   display: "flex",
-  justifyContent: "space-between",
+  justifyContent: "space-around",
   margin: "30px 10px",
 }}>
   {caterer && (
