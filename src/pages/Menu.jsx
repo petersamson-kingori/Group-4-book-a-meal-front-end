@@ -108,7 +108,7 @@ const Menu = ({ user }) => {
             {menuOption.menu_options.map((option) => (
               <div key={option.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}>
                 <span style={{ marginRight: '10px' }}>
-                <img src={option.imageUrl} alt={option.name} style={{ width: '500px', height: '500px', objectFit: 'cover', borderRadius: '5px' }} /> {/* Add the <img> tag */}
+                <img src={option.imageUrl} alt={option.name} style={{ width: '250px', height: '250px', objectFit: 'cover', borderRadius: '5px' }} /> 
                   {option.name} - ${option.price}
                 </span>
                 <button style={{
