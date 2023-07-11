@@ -48,12 +48,17 @@ const UserProfileCaterer = () => {
           </button>
         </div>
       )}
-      <div style={{ display: "flex", justifyContent: "space-between", margin: "10px 10px" }}>
+<div style={{ 
+  display: "flex",
+  justifyContent: "space-between",
+  margin: "30px 10px",
+  alignItems: "center",
+}}>
   {caterer && (
     <>
-      <MenuOptionForm />
-      <CatererMenu />
-      <Orders />
+      <MenuOptionForm style={{marginRight: '10px'}} />
+      <CatererMenu style={{marginRight: '10px', marginLeft: '10px'}} />
+      <Orders style={{marginLeft: '10px'}} />
     </>
   )}
 </div>
