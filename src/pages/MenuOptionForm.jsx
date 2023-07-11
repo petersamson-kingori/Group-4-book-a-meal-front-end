@@ -1,72 +1,136 @@
 import React, { useState } from 'react';
+import { useAuth } from "./auth";
 
-const CreateMenuOptionForm = () => {
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [price, setPrice] = useState('');
+const MenuOptionForm = ({ menuId }) => {
+  const { caterer } = useAuth();
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [day, setDay] = useState("");
+  const [imageUrl, setImageUrl] = useState(""); // Add imageUrl state
 
-  const handleSubmit = async (e) => {
+  const getMenuIdByDay = (selectedDay) => {
+    const menuName = selectedDay;
+    const menu = caterer.menus.find((menu) => menu.name === menuName);
+    if (menu) {
+      setDay(selectedDay);
+      return menu.id;
+    } else {
+      setDay("");
+      return null;
+    }
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch('/api/menu-options', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+    const token = localStorage.getItem("token");
+    if (token) {
+      const menuOptionData = {
+        menu_option: {
           name,
           description,
           price,
-          // Assuming you have the `menu_id` available here
-          //menu_id: menuId,
-        }),
-      });
+          day,
+          imageUrl // Include imageUrl in menu_optionData
+        }
+      };
+      const menuId = getMenuIdByDay(day);
 
-      if (response.ok) {
-        const data = await response.json();
-        // Handle success, e.g., display success message or redirect to menu details page
-        console.log('Menu option created:', data);
-      } else {
-        throw new Error('Failed to create menu option');
-      }
-    } catch (error) {
-      // Handle error, e.g., display error message
-      console.error('Error creating menu option:', error);
+      fetch(`https://group-4-book-a-meal-api.onrender.com/api/v1/caterers/${caterer.id}/menus/${menuId}/menu_options`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(menuOptionData)
+      })
+        .then(response => response.json())
+        .then(data => {
+          // Handle success
+          console.log("Menu option created:", data);
+          // Reset form fields
+          setName("");
+          setDescription("");
+          setPrice("");
+        })
+        .catch(error => console.error('Error creating menu option:', error));
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="description">Description:</label>
-        <textarea
-          id="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="price">Price:</label>
-        <input
-          type="number"
-          id="price"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        />
-      </div>
-      <button type="submit">Create Menu Option</button>
-    </form>
+    <div>
+      <h2 style={{ paddingLeft: '100px' }}>Menu</h2>
+      <form className="form mb-5" onSubmit={handleSubmit}>
+        <h5 className="md:text-2xl text-xl my-4 font-semibold text-gray-800">
+          Add Option
+        </h5>
+        <div className="form__group">
+          <label htmlFor="day">Select a day:</label>
+          <br />
+          <select
+            id="day"
+            value={day}
+            onChange={(e) => setDay(e.target.value)}
+            style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
+          >
+            <option value="">Select a day</option>
+            <option value="Sunday">Sunday</option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+          </select>
+          <label htmlFor="name">Name:</label>
+          <br />
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
+          />
+        </div>
+        <div className="form__group">
+          <label htmlFor="description">Description:</label>
+          <br />
+          <input
+            type="text"
+            id="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
+          />
+        </div>
+        <div className="form__group">
+          <label htmlFor="price">Price:</label>
+          <br />
+          <input
+            type="number"
+            id="price"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            style={{ borderRadius: "3px", border: "none", padding: "5px", marginBottom: "10px" }}
+          />
+        </div>
+        <div className="form__group">
+          <label htmlFor="imageUrl">Image URL:</label>
+          <br />
+          <input
+            type="text"
+            id="imageUrl"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+
+          />
+        </div>
+
+        <button className="addTOCart__btn">Submit</button>
+      </form>
+    </div>
   );
 };
 
-export default CreateMenuOptionForm;
+export default MenuOptionForm;

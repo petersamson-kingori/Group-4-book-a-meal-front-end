@@ -1,4 +1,3 @@
-// Login.jsx
 import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
@@ -9,7 +8,7 @@ import { useAuth } from "./auth";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
   const { login_caterer } = useAuth();
   const location = useLocation();
   const redirectPath = location.state?.path || "/profile_caterer";
@@ -41,7 +40,7 @@ const Login = () => {
         navigate(redirectPath, { replace: true });
       } else {
         const errorData = await response.json();
-        setErrors(errorData.error);
+        setErrors(errorData.errors || {});
       }
     } catch (error) {
       console.log(error);
@@ -70,6 +69,7 @@ const Login = () => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                       />
+                      {errors.email && <span className="error">{errors.email}</span>}
                     </div>
                     <div className="form__group">
                       <label htmlFor="password">Password</label>
@@ -79,6 +79,7 @@ const Login = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                       />
+                      {errors.password && <span className="error">{errors.password}</span>}
                     </div>
                     <button className="addTOCart__btn">Login</button>
                   </form>

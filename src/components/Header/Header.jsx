@@ -75,14 +75,14 @@ const Header = ({ user, setUser }) => {
       path: "/home",
       onClick: handleLogoutClick,
     },
-    {
-      display: "Foods",
-      path: "/foods",
-    },
-    {
-      display: "Cart",
-      path: "/cart",
-    },
+    // {
+    //   display: "Foods",
+    //   path: "/foods",
+    // },
+    // {
+    //   display: "Cart",
+    //   path: "/cart",
+    // },
     {
       display: "Contact",
       path: "/contact",
@@ -131,10 +131,10 @@ const Header = ({ user, setUser }) => {
 
           {/* ======== nav right icons ========= */}
           <div className="nav__right d-flex align-items-center gap-4">
-            <span className="cart__icon" onClick={toggleCart}>
+            {/* <span className="cart__icon" onClick={toggleCart}>
               <i class="ri-shopping-basket-line"></i>
               <span className="cart__badge">{totalQuantity}</span>
-            </span>
+            </span> */}
 
             <span className="user">
               {user ? (
