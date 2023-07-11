@@ -52,7 +52,6 @@ const UserProfileCaterer = () => {
   display: "flex",
   justifyContent: "space-between",
   margin: "30px 10px",
-  alignItems: "center",
 }}>
   {caterer && (
     <>
