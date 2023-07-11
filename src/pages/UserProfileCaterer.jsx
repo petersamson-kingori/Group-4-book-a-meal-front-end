@@ -74,7 +74,7 @@ const UserProfileCaterer = () => {
   <h4 style={{ margin: "5px 30px 30px 150px", padding: "10px" }}>
     Welcome back, {caterer.username}
     </h4>
-  <div style={{ display: "flex", justifyContent: "space-between", margin: "30px 100px 30px 100px", padding: "30px" }}>
+  <div style={{ display: "flex", justifyContent: "space-around", margin: "30px 100px 30px 100px", padding: "30px" }}>
   {caterer && (
     <>
  
