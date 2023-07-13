@@ -56,6 +56,8 @@ const Menu = ({ user }) => {
   const handleSubmit = async () => {
     const orderData = {
       userId: user.id,
+      caterer: menuOption.caterer.id,
+      menu: menuOption.caterer.menu,
       email: user.email,
       items: basketItems.map((menuOption) => ({
         id: menuOption.id,
