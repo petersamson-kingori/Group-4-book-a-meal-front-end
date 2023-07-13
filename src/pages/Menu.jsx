@@ -57,7 +57,7 @@ const Menu = ({ user }) => {
     const orderData = {
       userId: user.id,
       email: user.email,
-      caterer: menuOption.caterer_id,
+      caterer: caterer_id,
       items: basketItems.map((menuOption) => ({
         id: menuOption.id,
         name: menuOption.name,
