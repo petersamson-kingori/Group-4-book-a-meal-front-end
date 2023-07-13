@@ -33,7 +33,7 @@ const MenuOptionForm = ({ menuId }) => {
           price,
           day,
           caterer_id: caterer.id,
-          menu_id: menu.id,
+          menu_id: caterer.menu,
           imageUrl // Include imageUrl in menu_optionData
         }
       };
