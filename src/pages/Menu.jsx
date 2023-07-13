@@ -61,7 +61,7 @@ const Menu = ({ user }) => {
         id: menuOption.id,
         name: menuOption.name,
         price: menuOption.price,
-        caterer: menuOption.caterer.id,
+        caterer: menuOption.caterer_id,
         // menu: menuOption.caterer.menu,
 
       })),
