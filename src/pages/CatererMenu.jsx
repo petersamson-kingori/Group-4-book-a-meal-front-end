@@ -81,8 +81,8 @@ const CatererMenu = () => {
                       <p>{menuOption.name}</p>
                       <p>{menuOption.description}</p>
                       <button style={{
-              backgroundColor: 'transparent', // Set the background color to transparent
-              color: '#5CD88F', // Set the text color to the green color
+              backgroundColor: 'transparent', 
+              color: '#5CD88F', 
               padding: '10px 20px',
               borderRadius: '5px',
               border: '1px solid #5CD88F', 
